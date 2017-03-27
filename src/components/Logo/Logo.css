@@ -1,0 +1,20 @@
+@import "../../styles/abstracts/variables.css";
+
+.logo {
+  display: inline-block;
+  padding-left: 24px;
+  width: var(--side-bar-width);
+  height: var(--header-height);
+  background-color: #FFFFFF;
+  font-size: 1.6em;
+  line-height: var(--header-height);
+}
+
+.logo img {
+  margin-right: 8px;
+  margin-bottom: -3px;
+  margin-left: -8px;
+  width: 32px;
+  height: 32px;
+  vertical-align: text-bottom;
+}

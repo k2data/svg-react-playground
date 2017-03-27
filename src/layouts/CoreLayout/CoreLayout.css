@@ -1,0 +1,12 @@
+@import "../../styles/abstracts/variables.css";
+
+.core-layout {
+  height: 100%;
+  position: relative;
+}
+
+.viewport {
+  padding: 0 20px;
+  height: calc(100% - var(--header-height) - 1px);
+  overflow: auto;
+}

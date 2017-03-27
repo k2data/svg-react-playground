@@ -1,0 +1,16 @@
+index.html merge=ours
+main.js merge=ours
+
+routes/Counter/components/Counter.js merge=ours
+routes/Counter/containers/CounterContainer.js merge=ours
+routes/Counter/index.js merge=ours
+routes/Counter/modules/counter.js merge=ours
+
+routes/Home/components/HomeView.js merge=ours
+routes/Home/index.js merge=ours
+
+routes/index.js merge=ours
+
+store/createStore.js merge=ours
+store/location.js merge=ours
+store/reducers.js merge=ours

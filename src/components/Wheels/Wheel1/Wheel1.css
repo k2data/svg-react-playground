@@ -1,0 +1,77 @@
+.container {
+  width: 320px;
+  height: 320px;
+  position: relative;
+}
+
+.infographic {
+  height: 0;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  margin: 1em auto;
+}
+
+.menu {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform-origin: 50% 50% 0px;
+  transform:  matrix3d(0.440974, -0.89752, 0, 0, 0.89752, 0.440974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  user-select: none;
+  /*overflow: visible;*/ /* uncomment this if you are using bouncing animations*/
+}
+
+.infographic-content {
+  position: absolute;
+  top: 120px;
+  left: 112px;
+  z-index: 100;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+}
+
+.firm-number {
+  font-size: 50px;
+  line-height: 1;
+}
+
+.firm-title {
+  font-size: 20px;
+}
+
+.firm-tag {
+  font-size: 14px;
+}
+
+.infographic svg {
+  a {
+    cursor: pointer; /* SVG &lt;a&gt; elements don't get this by default, so you need to explicitly set it */
+    outline: none;
+  }
+  /* You can change these default styles any way you want */
+  .item .sector {
+    transition: all .1s linear;
+    fill: #000;
+    fill-opacity: 0.08;
+    stroke: #fff;
+  }
+  .item:hover .sector,
+  .item:focus .sector,
+  .item.active .sector{
+    fill: #000;
+    fill-opacity: 0.04;
+  }
+
+  .item.active .sector {
+    fill: none;
+  }
+
+  symbol {
+    overflow: visible; /* KEEP THIS so that text will not get cut off it it is wider than the icon width */
+  }
+}

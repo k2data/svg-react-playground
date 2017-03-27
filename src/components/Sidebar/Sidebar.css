@@ -1,0 +1,9 @@
+@import "../../styles/abstracts/variables.css";
+
+.bar {
+  width: var(--side-bar-width);
+  height: calc(100% - var(--header-height) - 1px);
+  float: left;
+  overflow: auto;
+  border-right: var(--default-border);
+}

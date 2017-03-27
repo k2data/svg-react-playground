@@ -1,0 +1,3 @@
+components/Header/Header.spec.js merge=ours
+routes/Home/components/HomeView.spec.js merge=ours
+store/createStore.spec.js merge=ours

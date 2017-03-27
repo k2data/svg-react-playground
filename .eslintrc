@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise",
+    "flowtype",
+    "import"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "globals": {
+    "__DEV__"      : false,
+    "__TEST__"     : false,
+    "__PROD__"     : false,
+    "__COVERAGE__" : false
+  },
+  "rules": {
+    "semi" : [2, "never"],
+    "key-spacing"             : 0,
+    "jsx-quotes"              : [2, "prefer-single"],
+    "max-len"                 : [2, 120, 2],
+    "object-curly-spacing"    : [2, "always"],
+    "flowtype/use-flow-type"  : 1,
+    "flowtype/valid-syntax"   : 1,
+    "no-duplicate-imports"    : 0,
+    "import/no-duplicates"    : 1
+  }
+}

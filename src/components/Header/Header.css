@@ -1,0 +1,8 @@
+@import "../../styles/abstracts/variables.css";
+
+.header {
+  height: calc(var(--header-height) + 1px);
+  line-height: var(--header-height);
+  border-bottom: var(--default-border);
+  padding-right: 20px;
+}
