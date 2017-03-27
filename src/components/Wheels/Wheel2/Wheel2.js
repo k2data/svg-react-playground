@@ -66,13 +66,13 @@ class Wheel2 extends Component {
     //
     /// ////////////////////////////////////////////////////////////////
     const drawPie = (snap, centre, rIn, rOut, data) => {
-      let startDeg = 0
+      const size = Object.entries(data).length
+      const delta = 359.99 / size
+      let startDeg = -(delta * 2 - 90)
 
       const pie = snap.group()
 
       for (let key in data) {
-        const delta = 359.99 / Object.entries(data).length
-
         const sector = this.drawPieSector(snap, centre,
                                    rIn, rOut, startDeg, delta, data[key].attr)
 
