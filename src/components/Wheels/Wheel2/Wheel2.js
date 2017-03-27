@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import items from './items'
+import items, { style as attrs } from './items'
 import styles from './Wheel2.css'
 
 const Snap = require(
@@ -9,83 +9,47 @@ const Snap = require(
 
 class Wheel2 extends Component {
   componentDidMount () {
-    /// ////////////////////////////////////////////////////////////////
-    // Draws the percent counter
-    //
-    /// ////////////////////////////////////////////////////////////////
-    const run = (percent) => {
-      const snap = Snap('#svg1')
+    this.drawWheel()
+  }
+
+  drawPie (snap, centre, rIn, rOut, data) {
+    const size = Object.entries(data).length
+    const delta = 359.99 / size
+    let startDeg = -(delta * 2 - 90)
+
+    const pie = snap.group()
+
+    for (let key in data) {
       let sector = null
-
-      const attr = {
-        stroke: '#3da08d',
-        fill: '#3da08d',
-        fillOpacity: 0.5,
-        strokeWidth: 1
-      }
-
-      Snap.animate(0, percent * 359.99, (deg) => {
+      Snap.animate(0, delta, ((start, end) => {
         if (sector) sector.remove()
-
-        sector = this.drawPieSector(snap,
-                               { x:100, y:100 },
-                               50, 95,
-                               0, deg,
-                               attr)
-      }, 1000, mina.easeinout)
-    }
-
-    /// ////////////////////////////////////////////////////////////////
-    // Draws the color chart
-    //
-    /// ////////////////////////////////////////////////////////////////
-    function drawColorChart () {
-      let chart = null
-      const snap = Snap('#svg2')
-
-      if (chart) chart.remove()
-
-      const pie = drawPie(snap,
-                        { x:100, y:100 },
-                        40, 95, items)
-
-      const circle = snap.circle(100, 100, 40)
-
-      circle.attr({
-        stroke: '#999',
-        fill: 'rgb(255, 255, 255)',
-        fillOpacity: 1,
-        strokeWidth: 1
-      })
-
-      chart = snap.group(pie, circle)
-    }
-
-    /// ////////////////////////////////////////////////////////////////
-    // Draws a pie chart
-    //
-    /// ////////////////////////////////////////////////////////////////
-    const drawPie = (snap, centre, rIn, rOut, data) => {
-      const size = Object.entries(data).length
-      const delta = 359.99 / size
-      let startDeg = -(delta * 2 - 90)
-
-      const pie = snap.group()
-
-      for (let key in data) {
-        const sector = this.drawPieSector(snap, centre,
-                                   rIn, rOut, startDeg, delta, data[key].attr)
+        sector = this.drawPieSector(snap, centre,
+                                   rIn, rOut, start, end, data[key].attr)
 
         pie.add(sector)
+      }).bind(null, startDeg), 800, mina.easeinout)
 
-        startDeg += delta
-      }
-
-      return pie
+      startDeg += delta
     }
 
-    run(1 / 7)
-    drawColorChart()
+    return pie
+  }
+
+  drawWheel () {
+    let chart = null
+    const snap = Snap('#svg')
+
+    if (chart) chart.remove()
+
+    const pie = this.drawPie(snap,
+                      { x:100, y:100 },
+                      40, 95, items)
+
+    const circle = snap.circle(100, 100, 40)
+
+    circle.attr(attrs)
+
+    chart = snap.group(pie, circle)
   }
 
   drawPieSector (snap, centre,
@@ -130,8 +94,7 @@ class Wheel2 extends Component {
   render () {
     return (
       <div className={`${styles['container']}`}>
-        <svg className={styles['svg']} id='svg1' />
-        <svg className={styles['svg']} id='svg2' />
+        <svg className={styles['svg']} id='svg' />
       </div>
     )
   }

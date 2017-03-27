@@ -1,5 +1,5 @@
-const style = {
-  stroke: '#999',
+export const style = {
+  stroke: '#bbb',
   fill: 'rgb(255, 255, 255)',
   fillOpacity: 0.5,
   strokeWidth: 1
