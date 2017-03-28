@@ -1,6 +1,6 @@
 .container {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   position: relative;
   font-family: 'Share Tech', sans-serif;
   color: #444;
@@ -9,6 +9,6 @@
 .svg {
   top: 0;
   left: 0;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }

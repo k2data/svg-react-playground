@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import License from 'components/License'
 import items, { style as attrs } from './items'
 import styles from './Wheel2.css'
 
@@ -10,6 +11,29 @@ const Snap = require(
 class Wheel2 extends Component {
   componentDidMount () {
     this.drawWheel()
+  }
+
+  drawWheel () {
+    const snap = Snap('#svg')
+    const viewBox = snap.attr('viewBox') || { x: 0, y: 0, width: 200, height: 200 }
+    const center = {
+      x: viewBox.width / 2,
+      y: viewBox.height / 2
+    }
+    const outR = viewBox.width / 2 / 10 * 9
+    const inR = viewBox.width / 5
+
+    if (this.chart) this.chart.remove()
+
+    const pie = this.drawPie(snap, center, inR, outR, items)
+
+    const circle = snap.circle(center.x, center.y, inR)
+
+    circle.attr(attrs)
+
+    this.defineSymbols(snap, items)
+
+    this.chart = snap.group(pie, circle)
   }
 
   drawPie (snap, centre, rIn, rOut, data) {
@@ -23,8 +47,8 @@ class Wheel2 extends Component {
       let sector = null
       Snap.animate(0, delta, ((start, end) => {
         if (sector) sector.remove()
-        sector = this.drawPieSector(snap, centre,
-                                   rIn, rOut, start, end, data[key].attr)
+        sector = this.drawPieSector(snap, centre, rIn, rOut,
+          start, end, delta, data[key])
 
         pie.add(sector)
       }).bind(null, startDeg), 800, mina.easeinout)
@@ -35,25 +59,26 @@ class Wheel2 extends Component {
     return pie
   }
 
-  drawWheel () {
-    let chart = null
-    const snap = Snap('#svg')
+  defineSymbols (snap, data) {
+    const symbols = snap.group()
+    for (let key in data) {
+      const { symbol : attrs, image } = data[key]
 
-    if (chart) chart.remove()
+      const s = snap.symbol(0, 0, attrs.w, attrs.h)
+      s.attr({ id: key })
 
-    const pie = this.drawPie(snap,
-                      { x:100, y:100 },
-                      40, 95, items)
+      s.image(image, 0, 0, attrs.w, attrs.w)
+      const text = s.text(attrs.w / 2, attrs.w, key)
+      text.attr(attrs.text)
 
-    const circle = snap.circle(100, 100, 40)
+      symbols.add(s)
+    }
 
-    circle.attr(attrs)
-
-    chart = snap.group(pie, circle)
+    return symbols
   }
 
-  drawPieSector (snap, centre,
-      rIn, rOut, startDeg, delta, attr) {
+  drawPieSector (snap, centre, rIn, rOut,
+      startDeg, delta, finalDelta, item) {
     const startOut = {
       x: centre.x + rOut * Math.cos(Math.PI * (startDeg) / 180),
       y: centre.y + rOut * Math.sin(Math.PI * (startDeg) / 180)
@@ -86,15 +111,42 @@ class Wheel2 extends Component {
 
     path = snap.path(path)
 
-    path.attr(attr)
+    path.attr(item.attr)
 
-    return path
+    const sector = snap.group()
+    sector.add(path)
+
+    if (finalDelta === delta) {
+      const sP = {
+        x: ((rOut + rIn) / 2) * Math.cos(Math.PI * (delta + startDeg + startDeg) / 2 / 180),
+        y: ((rOut + rIn) / 2) * Math.sin(Math.PI * (delta + startDeg + startDeg) / 2 / 180)
+      }
+
+      // use use
+      const use = sector.use()
+      use.attr({
+        'xlink:href': '#' + item.name,
+        width: item.symbol.w,
+        height: item.symbol.h,
+        x: Math.round(centre.x + sP.x - item.symbol.w / 2),
+        y: Math.round(centre.y + sP.y - item.symbol.h / 2)
+      })
+      // use.transform(`transform(${Math.round(centre.x + sP.x - 15)}, ${Math.round(centre.y + sP.y - 15)})`)
+      sector.add(use)
+    }
+
+    return sector
   }
 
   render () {
     return (
       <div className={`${styles['container']}`}>
-        <svg className={styles['svg']} id='svg' />
+        <License>
+          <a href='http://www.flaticon.com/packs/sharing-out-3' target='_blank'>
+            icons designed by Freepik from Flaticon
+          </a>
+        </License>
+        <svg className={styles['svg']} id='svg' viewBox='0 0 300 300' />
       </div>
     )
   }
