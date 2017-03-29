@@ -1,14 +1,24 @@
 // @flow
 import React, { Component } from 'react'
 import License from 'components/License'
-import items, { style as attrs } from './items'
+import items, { circAttr } from './items'
 import styles from './Wheel2.css'
 
 const Snap = require(
   `imports-loader?this=>window,fix=>module.exports=0!snapsvg/dist/snap.svg.js`
 )
 
+type Props = {}
+
 class Wheel2 extends Component {
+  props: Props
+
+  constructor (props: Props) {
+    super(props)
+
+    this.toggleMenu = this.toggleMenu.bind(this)
+  }
+
   componentDidMount () {
     this.drawWheel()
   }
@@ -16,7 +26,7 @@ class Wheel2 extends Component {
   drawWheel () {
     const snap = Snap('#svg')
     const viewBox = snap.attr('viewBox') || { x: 0, y: 0, width: 200, height: 200 }
-    const center = {
+    this.center = {
       x: viewBox.width / 2,
       y: viewBox.height / 2
     }
@@ -25,15 +35,59 @@ class Wheel2 extends Component {
 
     if (this.chart) this.chart.remove()
 
-    const pie = this.drawPie(snap, center, inR, outR, items)
+    this.pie = this.drawPie(snap, this.center, inR, outR, items)
 
-    const circle = snap.circle(center.x, center.y, inR)
+    const circle = snap.circle(this.center.x, this.center.y, inR)
 
-    circle.attr(attrs)
+    circle.attr(circAttr)
+    circle.addClass(styles['circle'])
+
+    this.open = true
+    circle.click(this.toggleMenu)
 
     this.defineSymbols(snap, items)
 
-    this.chart = snap.group(pie, circle)
+    this.chart = snap.group(this.pie, circle)
+  }
+
+  toggleMenu (e) {
+    this.open = !this.open
+    Array.prototype.forEach.call(this.pie.children(), (sector, index, arr) => {
+      const delta = 359.99 / arr.length
+      let startDeg = 270 - (delta * 2 - 90)
+      let deg = startDeg - index * delta
+      if (Math.round(deg) < 0) {
+        deg = 360 + deg
+      }
+
+      if (!this.open) {
+        Snap.animate(0, deg, (val) => {
+          sector.attr({
+            transform: `rotate(${val})`
+          })
+        }, 300)
+        setTimeout(() => {
+          Snap.animate(1, 0, (val) => {
+            sector.attr({
+              transform: `rotate(${deg}) scale(${val})`
+            })
+          }, 400, mina.backin)
+        }, 300)
+      } else {
+        Snap.animate(0, 1, (val) => {
+          sector.attr({
+            transform: `rotate(${deg}) scale(${val})`
+          })
+        }, 300, mina.backout)
+        setTimeout(() => {
+          Snap.animate(deg, 0, (val) => {
+            sector.attr({
+              transform: `rotate(${val}) scale(${1})`
+            })
+          }, 800, mina.bounce)
+        }, 400)
+      }
+    })
   }
 
   drawPie (snap, centre, rIn, rOut, data) {
@@ -90,13 +144,13 @@ class Wheel2 extends Component {
     }
 
     const startIn = {
-      x: centre.x + rIn * Math.cos(Math.PI * (startDeg + delta) / 180),
-      y: centre.y + rIn * Math.sin(Math.PI * (startDeg + delta) / 180)
+      x: centre.x + (rIn - rOut / 5) * Math.cos(Math.PI * (startDeg + delta) / 180),
+      y: centre.y + (rIn - rOut / 5) * Math.sin(Math.PI * (startDeg + delta) / 180)
     }
 
     const endIn = {
-      x: centre.x + rIn * Math.cos(Math.PI * (startDeg) / 180),
-      y: centre.y + rIn * Math.sin(Math.PI * (startDeg) / 180)
+      x: centre.x + (rIn - rOut / 5) * Math.cos(Math.PI * (startDeg) / 180),
+      y: centre.y + (rIn - rOut / 5) * Math.sin(Math.PI * (startDeg) / 180)
     }
 
     const largeArc = delta > 180 ? 1 : 0
@@ -135,6 +189,7 @@ class Wheel2 extends Component {
       sector.add(use)
     }
 
+    sector.attr({ 'transform-origin': `${150} ${150}` })
     return sector
   }
 

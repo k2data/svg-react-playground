@@ -5,6 +5,13 @@ export const style = {
   strokeWidth: 1
 }
 
+export const circAttr = {
+  stroke: '#bbb',
+  fill: 'rgb(255, 255, 255)',
+  fillOpacity: 1,
+  strokeWidth: 1
+}
+
 export const symbol = {
   w: 40,
   h: 60,

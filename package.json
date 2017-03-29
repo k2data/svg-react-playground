@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "svg-react-playground",
+  "version": "0.1.0-alpha.1",
+  "description": "",
   "main": "index.js",
   "engines": {
     "node": ">=4.5.0",
@@ -12,6 +12,7 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
+    "flow": "flow",
     "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
@@ -75,7 +76,6 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "MIT",
   "dependencies": {
-    "animejs": "^2.0.1",
     "antd": "^2.8.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
