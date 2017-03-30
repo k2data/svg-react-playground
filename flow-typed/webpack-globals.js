@@ -4,3 +4,4 @@ declare var __TEST__: boolean;
 declare var __PROD__: boolean;
 declare var __BASENAME__: boolean;
 declare var module: Object;
+declare var mina: Object;

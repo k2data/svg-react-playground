@@ -18,6 +18,9 @@ type State = {
 class Wheel1 extends Component {
   props: Props
   state: State
+  items: Array<any>
+  handleClick: () => void
+  getItemClasses: () => void
 
   constructor (props: Props) {
     super(props)
@@ -41,8 +44,8 @@ class Wheel1 extends Component {
     })
   }
 
-  handleClick (index) {
-    return (event) => {
+  handleClick (index: number) {
+    return (event: Event) => {
       event.preventDefault()
 
       if (this.state.currentIndex === index) return false
@@ -61,7 +64,7 @@ class Wheel1 extends Component {
     }
   }
 
-  getItemClasses (index) {
+  getItemClasses (index: number) {
     return cx({
       item: true,
       active: this.state.currentIndex === index

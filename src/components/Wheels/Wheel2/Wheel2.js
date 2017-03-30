@@ -9,9 +9,18 @@ const Snap = require(
 )
 
 type Props = {}
+type Coordinate = {
+  x: number,
+  y: number
+}
 
 class Wheel2 extends Component {
   props: Props
+  open: boolean
+  center: Coordinate
+  chart: any
+  pie: any
+  toggleMenu: () => void
 
   constructor (props: Props) {
     super(props)
@@ -50,7 +59,7 @@ class Wheel2 extends Component {
     this.chart = snap.group(this.pie, circle)
   }
 
-  toggleMenu (e) {
+  toggleMenu () {
     this.open = !this.open
     Array.prototype.forEach.call(this.pie.children(), (sector, index, arr) => {
       const delta = 359.99 / arr.length
@@ -90,7 +99,7 @@ class Wheel2 extends Component {
     })
   }
 
-  drawPie (snap, centre, rIn, rOut, data) {
+  drawPie (snap, centre: Coordinate, rIn: number, rOut: number, data: any) {
     const size = Object.entries(data).length
     const delta = 359.99 / size
     let startDeg = -(delta * 2 - 90)
@@ -113,7 +122,7 @@ class Wheel2 extends Component {
     return pie
   }
 
-  defineSymbols (snap, data) {
+  defineSymbols (snap, data: any) {
     const symbols = snap.group()
     for (let key in data) {
       const { symbol : attrs, image } = data[key]
@@ -131,8 +140,8 @@ class Wheel2 extends Component {
     return symbols
   }
 
-  drawPieSector (snap, centre, rIn, rOut,
-      startDeg, delta, finalDelta, item) {
+  drawPieSector (snap, centre: Coordinate, rIn: number, rOut: number,
+      startDeg: number, delta: number, finalDelta: number, item: any) {
     const startOut = {
       x: centre.x + rOut * Math.cos(Math.PI * (startDeg) / 180),
       y: centre.y + rOut * Math.sin(Math.PI * (startDeg) / 180)
