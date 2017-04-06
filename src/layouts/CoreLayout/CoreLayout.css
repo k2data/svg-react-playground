@@ -6,7 +6,7 @@
 }
 
 .viewport {
-  padding: 0 20px;
-  height: calc(100% - var(--header-height) - 1px);
+  padding: 20px;
+  height: 100%;
   overflow: auto;
 }

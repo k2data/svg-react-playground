@@ -1,7 +1,0 @@
-@import "../../styles/abstracts/variables.css";
-
-.profile {
-  display: inline-block;
-  float: right;
-  height: var(--header-height);
-}

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { TweenLite, TweenMax } from 'gsap'
 import classNames from 'classnames/bind'
 // import anime from 'animejs'
-import License from 'components/License'
 import items from './items'
 import images from './images'
 import styles from './Wheel1.css'
@@ -74,11 +73,6 @@ class Wheel1 extends Component {
   render () {
     return (
       <div className={styles['container']}>
-        <License>
-          <a href='http://www.flaticon.com/packs/sharing-out-3' target='_blank'>
-            icons designed by Freepik from Flaticon
-          </a>
-        </License>
         <div className={styles['infographic-content']}>
           <div className={styles['firm-number']}>77</div>
           <div className={styles['firm-title']}>Offices</div>

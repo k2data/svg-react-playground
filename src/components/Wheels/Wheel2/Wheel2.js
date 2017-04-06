@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import License from 'components/License'
 import items, { circAttr } from './items'
 import styles from './Wheel2.css'
 
@@ -205,11 +204,6 @@ class Wheel2 extends Component {
   render () {
     return (
       <div className={`${styles['container']}`}>
-        <License>
-          <a href='http://www.flaticon.com/packs/sharing-out-3' target='_blank'>
-            icons designed by Freepik from Flaticon
-          </a>
-        </License>
         <svg className={styles['svg']} id='svg' viewBox='0 0 300 300' />
       </div>
     )

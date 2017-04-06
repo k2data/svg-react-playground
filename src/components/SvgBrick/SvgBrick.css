@@ -1,0 +1,25 @@
+@import "../../styles/abstracts/variables.css";
+
+.brick {
+	position: relative;
+	width: 100%;		/* desired width */
+}
+
+.brick:before {
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* ratio of 1:1*/
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: var(--default-border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
