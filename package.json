@@ -89,6 +89,8 @@
     "compression": "^1.6.2",
     "css-loader": "^0.26.2",
     "cssnano": "^3.10.0",
+    "d3": "^4.8.0",
+    "d3-selection": "^1.0.6",
     "debug": "^2.6.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
@@ -115,6 +117,7 @@
     "snapsvg": "^0.5.1",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
+    "url-search-params-polyfill": "^1.2.0",
     "webpack": "^2.2.1",
     "yargs": "^7.0.1"
   },

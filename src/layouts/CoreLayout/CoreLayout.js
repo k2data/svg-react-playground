@@ -14,6 +14,7 @@ export const CoreLayout = () => (
     <div className={styles['viewport']}>
       <Switch>
         <Route path='/' component={routes.home} exact />
+        <Route path='/pages' component={routes.pages} exact />
         <Route path='/wheels' component={routes.wheels} />
         <Route path='/counter' component={routes.counter} exact />
       </Switch>

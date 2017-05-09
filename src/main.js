@@ -5,6 +5,7 @@ import createStore from './store/createStore'
 import { AppContainer as HotContainer } from 'react-hot-loader'
 import AppContainer from './containers/AppContainer'
 import 'isomorphic-fetch'
+import 'url-search-params-polyfill'
 
 // ========================================================
 // Store Instantiation

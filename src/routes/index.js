@@ -3,6 +3,7 @@
 import Home from './Home'
 import Counter from './Counter'
 import Wheels from './Wheels'
+import Pages from './Pages'
 
 // Force import during development to enable Hot-Module Replacement
 // not need ?
@@ -15,5 +16,6 @@ import Wheels from './Wheels'
 export default {
   home: Home,
   counter: Counter(),
-  wheels: Wheels()
+  wheels: Wheels(),
+  pages: Pages()
 }

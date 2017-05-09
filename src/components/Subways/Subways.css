@@ -1,0 +1,20 @@
+.size {
+  width: 9448px;
+  height:  6719px;
+}
+
+.canvas {
+  composes: size;
+  position: relative;
+}
+
+.img-layer {
+  composes: size;
+}
+
+.svg-layer {
+  composes: size;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
