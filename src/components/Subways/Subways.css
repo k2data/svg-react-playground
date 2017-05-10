@@ -18,3 +18,13 @@
   top: 0;
   left: 0;
 }
+
+.station--circle {
+  fill: red;
+  opacity: .7;
+}
+
+.station--text {
+  font-size: 24px;
+  text-anchor: end;
+}
