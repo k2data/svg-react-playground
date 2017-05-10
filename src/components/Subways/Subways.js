@@ -59,17 +59,48 @@ export class Subways extends Component {
         { x: 4388, y: 2453, name: '霍营', text: 'top', isExchange: true, to: ['Line8'] },
         { x: 5049, y: 2453, name: '立水桥', text: 'top', isExchange: true, to: ['Line5'] },
         { x: 5452, y: 2606, name: '北苑', text: 'right' },
-        { x: 5452, y: 2910, name: '望京西', text: 'right', isExchange: true, to: ['Line15'] },
+        { x: 5452, y: 2908.5, name: '望京西', text: 'right', isExchange: true, to: ['Line15'] },
         { x: 5452, y: 3191, name: '芍药居', text: 'right', isExchange: true, to: ['Line10'] },
         { x: 5452, y: 3394, name: '光熙门', text: 'right' },
         { x: 5452, y: 3532, name: '柳芳', text: 'right' },
         { x: 5362, y: 3699, name: '东直门', text: 'left', isExchange: true, to: ['Line2', 'AirportExpress'] }
       ]
     })
+
+    // Line 15:
+    this.drawLine(svg, {
+      d: `M3795 2908.5 H6455.5
+        C6465.5 2908.5, 6485 2892.5, 6485 2882.5 V1985.5
+        C6485 1968.5, 6495.5 1952.5, 6512.5 1952.5 H7895.5
+        `,
+      color: '#603471',
+      stationsData: [
+        { x: 3795, y: 2908.5, name: '清华东路西口', text: 'top' },
+        { x: 4038, y: 2908.5, name: '六道口', text: 'top' },
+        { x: 4260, y: 2908.5, name: '北沙滩', text: 'top' },
+        { x: 4554, y: 2908.5, name: '奥林匹克公园', text: 'bottom-left', isExchange: true, to: ['Line8'] },
+        { x: 4795, y: 2908.5, name: '安立路', text: 'top' },
+        { x: 5049, y: 2908.5, name: '大屯路东', text: 'top-right', isExchange: true, to: ['Line5'] },
+        { x: 5245, y: 2908.5, name: '关庄', text: 'bottom' },
+        { x: 5452, y: 2908.5, name: '望京西', text: 'top-right', isExchange: true, to: ['Line13'] },
+        { x: 5869.5, y: 2908.5, name: '望京', text: 'bottom-left', isExchange: true, to: ['Line14'] },
+        { x: 6241.5, y: 2908.5, name: '望京东', text: 'top' },
+        { x: 6485, y: 2767.5, name: '崔各庄', text: 'right' },
+        { x: 6485, y: 2620.5, name: '马泉营', text: 'right' },
+        { x: 6485, y: 2467.5, name: '孙河', text: 'right' },
+        { x: 6485, y: 2321.5, name: '国展', text: 'left' },
+        { x: 6485, y: 2173.5, name: '花梨坎', text: 'left' },
+        { x: 6485, y: 2017.5, name: '后沙峪', text: 'left' },
+        { x: 6775, y: 1952.5, name: '南法信', text: 'bottom' },
+        { x: 7143, y: 1952.5, name: '石门', text: 'top' },
+        { x: 7493.5, y: 1952.5, name: '顺义', text: 'bottom' },
+        { x: 7895.5, y: 1952.5, name: '俸伯', text: 'top' }
+      ]
+    })
   }
 
   drawLine (svg: Object, options: Object) {
-    const { d, color, stationsData } = options
+    const { d, color, stationsData = [] } = options
     const line = svg.append('g')
     line.append('path')
       // x/y the same, x/y +- X (30 ~ 70)
@@ -77,8 +108,6 @@ export class Subways extends Component {
       .attr('stroke', color || 'black')
       .attr('fill', 'none')
       .attr('stroke-width', lineWidth)
-
-    if (!stationsData) return
 
     const stations = line.selectAll('circle')
       .data(stationsData)
@@ -120,7 +149,7 @@ export class Subways extends Component {
       case 'top':
         return -40
       case 'bottom':
-        return 40
+        return 60
       default:
         return 40
     }

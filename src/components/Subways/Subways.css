@@ -20,9 +20,10 @@
 }
 
 .station--circle {
+  /*fill: red;*/
   fill: none;
   stroke: black;
-  stroke-width: 5px;
+  stroke-width: 4px;
   opacity: .7;
 }
 
