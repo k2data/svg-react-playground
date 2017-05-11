@@ -39,10 +39,20 @@ export class Subways extends Component {
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
 
-    // Line 5
-
+    // Line2
     this.drawLine(svg, {
-      d: `M5049 1978 V5347`,
+      d: `M3767 3698 C3767 3610, 3817 3589.5 , 3844 3589.5 H5290
+        C5312 3589.5, 5363 3616, 5363 3681 V4453`,
+      // color: 'rgb(37,85,133)',
+      color: 'pink',
+      stationsData: [
+        { x: 3767, y: 3698, name: '西直门', text: 'left', isExchange: true, to: ['Line2', 'Line4'] }
+      ]
+    })
+
+    // Line 5
+    this.drawLine(svg, {
+      d: 'M5049 1978 V5347',
       color: 'rgb(147,45,118)',
       stationsData: [
         { x: 5049, y: 1978, name: '天通苑北', text: 'right' },
