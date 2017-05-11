@@ -39,6 +39,38 @@ export class Subways extends Component {
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
 
+    // Line 5
+
+    this.drawLine(svg, {
+      d: `M5049 1978 V5347`,
+      color: 'rgb(147,45,118)',
+      stationsData: [
+        { x: 5049, y: 1978, name: '天通苑北', text: 'right' },
+        { x: 5049, y: 2130, name: '天通苑', text: 'right' },
+        { x: 5049, y: 2300, name: '天通苑南', text: 'right' },
+        { x: 5049, y: 2453, name: '立水桥', text: 'left', isExchange: true, to: ['Line13'] },
+        { x: 5048, y: 2591, name: '立水桥南', text: 'right' },
+        { x: 5049, y: 2729, name: '北苑路北', text: 'right' },
+        { x: 5049, y: 2908.5, name: '大屯路东', text: 'right', isExchange: true, to: ['Line15'] },
+        { x: 5049, y: 3060, name: '惠新西街北口', text: 'right' },
+        { x: 5049, y: 3192, name: '惠新西街南口', text: 'right', isExchange: true, to: ['Line10'] },
+        { x: 5049, y: 3361, name: '和平西桥', text: 'right' },
+        { x: 5049, y: 3477, name: '和平里北街', text: 'right' },
+        { x: 5049, y: 3590, name: '雍和宫', text: 'left', isExchange: true, to: ['Line2'] },
+        { x: 5049, y: 3774.5, name: '北新桥', text: 'right' },
+        { x: 5049, y: 3901.5, name: '张自忠路', text: 'right' },
+        { x: 5049, y: 4071, name: '东四', text: 'right', isExchange: true, to: ['Line6'] },
+        { x: 5049, y: 4185.5, name: '灯市口', text: 'right' },
+        { x: 5049, y: 4307, name: '东单', text: 'right', isExchange: true, to: ['Line1'] },
+        { x: 5049, y: 4540, name: '崇文门', text: 'top', isExchange: true, to: ['Line2'] },
+        { x: 5049, y: 4684, name: '磁器口', text: 'left', isExchange: true, to: ['Line7'] },
+        { x: 5049, y: 4839, name: '天坛东门', text: 'right' },
+        { x: 5049, y: 4999, name: '蒲黄榆', text: 'bottom', isExchange: true, to: ['Line14'] },
+        { x: 5049, y: 5168, name: '刘家窑', text: 'left' },
+        { x: 5049, y: 5347, name: '宋家庄', text: 'right', isExchange: true, to: ['Line10'] }
+      ]
+    })
+
     // Line 13:
     this.drawLine(svg, {
       d: `M3767 3698 C3727 3698, 3654 3667, 3654 3627 V2580
