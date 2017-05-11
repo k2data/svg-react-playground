@@ -42,11 +42,29 @@ export class Subways extends Component {
     // Line2
     this.drawLine(svg, {
       d: `M3767 3698 C3767 3610, 3817 3589.5 , 3844 3589.5 H5290
-        C5312 3589.5, 5363 3616, 5363 3681 V4453`,
-      // color: 'rgb(37,85,133)',
-      color: 'pink',
+        C5312 3589.5, 5363 3616, 5363 3681 V4453
+        C5362 4494, 5330 4538, 5283 4538 H3848
+        C3794 4538, 3767 4483, 3767 4449 V3698`,
+      color: 'rgb(37,85,133)',
       stationsData: [
-        { x: 3767, y: 3698, name: '西直门', text: 'left', isExchange: true, to: ['Line2', 'Line4'] }
+        { x: 3767, y: 3698, name: '西直门', text: 'left', isExchange: true, to: ['Line2', 'Line4'] },
+        { x: 4076, y: 3589, name: '积水潭', text: 'top' },
+        { x: 4554, y: 3589, name: '鼓楼大街', text: 'top', isExchange: true, to: ['Line8'] },
+        { x: 4788, y: 3589, name: '安定门', text: 'top' },
+        { x: 5049, y: 3589, name: '雍和宫', text: 'top', isExchange: true, to: ['Line5'] },
+        { x: 5362, y: 3699, name: '东直门', text: 'top', isExchange: true, to: ['Line13', 'AirportExpress'] },
+        { x: 5363, y: 3891, name: '东四十条', text: 'right' },
+        { x: 5363, y: 4071, name: '朝阳门', text: 'right', isExchange: true, to: ['Line6'] },
+        { x: 5363, y: 4308, name: '建国门', text: 'right', isExchange: true, to: ['Line1'] },
+        { x: 5331.5, y: 4520, name: '北京站', text: 'right' },
+        { x: 5049, y: 4540, name: '崇文门', text: 'top', isExchange: true, to: ['Line5'] },
+        { x: 4543.5, y: 4538, name: '前门', text: 'bottom' },
+        { x: 4319, y: 4538, name: '和平门', text: 'top' },
+        { x: 4130, y: 4538, name: '宣武门', text: 'top', isExchange: true, to: ['Line4'] },
+        { x: 3781, y: 4495.5, name: '长椿街', text: 'left' },
+        { x: 3767, y: 4306, name: '复兴门', text: 'right', isExchange: true, to: ['Line1'] },
+        { x: 3767, y: 4127, name: '阜成门', text: 'left' },
+        { x: 3767, y: 3952, name: '车公庄', text: 'top', isExchange: true, to: ['Line6'] }
       ]
     })
 
@@ -224,7 +242,6 @@ export class Subways extends Component {
       <div className={styles['canvas']} ref='canvas'
         onClick={this.handleClickOnCanvas}
       >
-        <img src='/images/subway_map.jpg' className={styles['img-layer']} />
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
