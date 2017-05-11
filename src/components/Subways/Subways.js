@@ -109,11 +109,11 @@ export class Subways extends Component {
       .attr('fill', 'none')
       .attr('stroke-width', lineWidth)
 
-    const stations = line.selectAll('circle')
+    const stations = line.selectAll('g')
       .data(stationsData)
       .enter()
       .append('g')
-      .attr('class', styles['station'])
+      // .attr('class', styles['station'])
 
     stations.append('circle')
       .attr('cx', (d) => d.x)
