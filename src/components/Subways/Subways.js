@@ -39,7 +39,7 @@ export class Subways extends Component {
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
 
-    // Line2
+    // Line 2:
     this.drawLine(svg, {
       d: `M3767 3698 C3767 3610, 3817 3589.5 , 3844 3589.5 H5290
         C5312 3589.5, 5363 3616, 5363 3681 V4453
@@ -68,7 +68,7 @@ export class Subways extends Component {
       ]
     })
 
-    // Line 5
+    // Line 5:
     this.drawLine(svg, {
       d: 'M5049 1978 V5347',
       color: 'rgb(147,45,118)',
@@ -93,7 +93,7 @@ export class Subways extends Component {
         { x: 5049, y: 4540, name: '崇文门', text: 'top', isExchange: true, to: ['Line2'] },
         { x: 5049, y: 4684, name: '磁器口', text: 'left', isExchange: true, to: ['Line7'] },
         { x: 5049, y: 4839, name: '天坛东门', text: 'right' },
-        { x: 5049, y: 4999, name: '蒲黄榆', text: 'bottom', isExchange: true, to: ['Line14'] },
+        { x: 5049, y: 4995, name: '蒲黄榆', text: 'bottom', isExchange: true, to: ['Line14'] },
         { x: 5049, y: 5168, name: '刘家窑', text: 'left' },
         { x: 5049, y: 5347, name: '宋家庄', text: 'right', isExchange: true, to: ['Line10'] }
       ]
@@ -127,6 +127,43 @@ export class Subways extends Component {
       ]
     })
 
+    // Line 14:
+    this.drawLine(svg, {
+      d: `M1709 4937 H2834 Z
+        M4127 4995 H6016 C6069 4995, 6100 4942, 6100 4900 V3292
+        C6095 3264, 6094 3241, 6063 3210 L5924 3058
+        C5882 3021, 5872 2977, 5872 2909 V2575`,
+      color: 'rgb(187,145,147)',
+      stationsData: [
+        { x: 1709, y: 4937, name: '张郭庄', text: 'top' },
+        { x: 1875, y: 4937, name: '园博园', text: 'bottom' },
+        { x: 2060, y: 4937, name: '大瓦窑', text: 'top' },
+        { x: 2233.5, y: 4937, name: '郭庄子', text: 'bottom' },
+        { x: 2477, y: 4937, name: '大井', text: 'bottom' },
+        { x: 2700, y: 4937, name: '七里庄', text: 'bottom', isExchange: true, to: ['Line9'] },
+        { x: 2834, y: 4937, name: '西局', text: 'right', isExchange: true, to: ['Line10'] },
+        { x: 4127, y: 4995, name: '北京南站', text: 'left' },
+        { x: 4577.5, y: 4995, name: '永定门外', text: 'bottom' },
+        { x: 4796, y: 4995, name: '景泰', text: 'top' },
+        { x: 5049, y: 4995, name: '蒲黄榆', text: 'bottom', isExchange: true, to: ['Line5'] },
+        { x: 5449, y: 4995, name: '方庄', text: 'bottom' },
+        { x: 5817, y: 4995, name: '十里河', text: 'bottom', isExchange: true, to: ['Line10'] },
+        { x: 5984, y: 4995, name: '北工大西门', text: 'top' },
+        { x: 6100, y: 4682, name: '九龙山', text: 'bottom', isExchange: true, to: ['Line7'] },
+        { x: 6100, y: 4307, name: '大望路', text: 'bottom', isExchange: true, to: ['Line1'] },
+        { x: 6100, y: 4071, name: '金台路', text: 'bottom', isExchange: true, to: ['Line6'] },
+        { x: 6100, y: 3887, name: '朝阳公园', text: 'top' },
+        { x: 6100, y: 3758.5, name: '枣营', text: 'bottom' },
+        { x: 6100, y: 3628, name: '东风北桥', text: 'bottom' },
+        { x: 6100, y: 3514.5, name: '将台', text: 'bottom' },
+        { x: 6031, y: 3175.5, name: '望京南', text: 'top' },
+        { x: 5923, y: 3057, name: '阜通', text: 'bottom' },
+        { x: 5872, y: 2908.5, name: '望京', text: 'bottom', isExchange: true, to: ['Line15'] },
+        { x: 5872, y: 2818, name: '东湖渠', text: 'top' },
+        { x: 5872, y: 2704, name: '来广营', text: 'bottom' },
+        { x: 5872, y: 2575, name: '善各庄', text: 'bottom' }
+      ]
+    })
     // Line 15:
     this.drawLine(svg, {
       d: `M3795 2908.5 H6455.5
@@ -242,9 +279,7 @@ export class Subways extends Component {
       <div className={styles['canvas']} ref='canvas'
         onClick={this.handleClickOnCanvas}
       >
-        {
-          // <img src='/images/subway_map.jpg' className={styles['img-layer']} />
-        }
+        <img src='/images/subway_map.jpg' className={styles['img-layer']} />
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
