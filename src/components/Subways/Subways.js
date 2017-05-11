@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import styles from './Subways.css'
 import { select } from 'd3-selection'
+import Line1 from './Line1'
+import Line4 from './Line4'
 
 const d3 = {
   select
@@ -97,6 +99,9 @@ export class Subways extends Component {
         { x: 7895.5, y: 1952.5, name: '俸伯', text: 'top' }
       ]
     })
+
+    this.drawLine(svg, Line1)
+    this.drawLine(svg, Line4)
   }
 
   drawLine (svg: Object, options: Object) {

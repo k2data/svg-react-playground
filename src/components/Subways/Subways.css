@@ -9,6 +9,7 @@
 }
 
 .img-layer {
+  opacity: .2;
   composes: size;
 }
 
