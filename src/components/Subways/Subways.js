@@ -16,6 +16,7 @@ type Props = {
 
 export class Subways extends Component {
   props: Props
+  svg: Object
   draw: () => void
   drawLine: () => void
   textX: (position: string) => number
@@ -33,10 +34,20 @@ export class Subways extends Component {
 
   componentDidMount () {
     this.draw()
+    // const line = this.refs.svg.querySelector('g#LINE_8 > path')
+    // console.log(line.getTotalLength())
+    // const currentP = line.getPointAtLength(1067.5)
+    // console.log(currentP)
+    // this.svg.append('circle')
+    //   .attr('cx', currentP.x)
+    //   .attr('cy', currentP.y)
+    //   .attr('r', stationR)
+    //   .attr('class', styles['active--circle'])
   }
 
   draw () {
     const svg = d3.select(this.refs.svg)
+    this.svg = svg
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
     const drawLine = this.drawLine.bind(null, svg)
@@ -44,8 +55,9 @@ export class Subways extends Component {
   }
 
   drawLine (svg: Object, options: Object) {
-    const { d, color, stationsData = [] } = options
+    const { name, d, color, stationsData = [] } = options
     const line = svg.append('g')
+      .attr('id', name)
     line.append('path')
       // x/y the same, x/y +- X (30 ~ 70)
       .attr('d', d)
@@ -126,7 +138,7 @@ export class Subways extends Component {
       <div className={styles['canvas']} ref='canvas'
         onClick={this.handleClickOnCanvas}
       >
-        <img src='/images/subway_map.jpg' className={styles['img-layer']} style={{ opacity: 0.2 }} />
+        <img src='/images/subway_map.jpg' className={styles['img-layer']} />
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'

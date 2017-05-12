@@ -9,7 +9,7 @@
 }
 
 .img-layer {
-  opacity: .1;
+  /*opacity: .1;*/
   composes: size;
 }
 
@@ -22,9 +22,17 @@
 
 .station--circle {
   /*fill: red;*/
-  fill: none;
+  fill: rgb(255, 255, 255);
   stroke: black;
   stroke-width: 4px;
+  opacity: .9;
+}
+
+.active--circle {
+  fill: yellow;
+  /*fill: none;
+  stroke: black;
+  stroke-width: 4px;*/
   opacity: .7;
 }
 
