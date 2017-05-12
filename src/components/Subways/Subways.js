@@ -266,6 +266,67 @@ export class Subways extends Component {
       ]
     })
 
+    // Line ChangP
+    this.drawLine(svg, {
+      d: `M2425 1335.5 H2615
+      C2665 1336, 2665 1360 2830 1515
+      C2885 1550, 2810 1550 3772 1538
+      C3868 1545, 3810 1625 3830 2180
+      C3827 2225, 3780 2217, 3695 2280
+      C3635 2310, 3655 2370, 3656 2585`,
+      color: '#d274a6',
+      stationsData: [
+        { x: 2425, y: 1335.5, name: '昌平西山口', text: 'left' },
+        { x: 2693, y: 1375, name: '十三陵景区', text: 'right' },
+        { x: 2990, y: 1537.5, name: '昌平', text: 'top' },
+        { x: 3341, y: 1537.5, name: '昌平东关', text: 'top' },
+        { x: 3716, y: 1537.5, name: '北邵洼', text: 'top' },
+        { x: 3826, y: 1698, name: '南邵', text: 'left' },
+        { x: 3826, y: 1806, name: '沙河高教园', text: 'left' },
+        { x: 3826, y: 1926, name: '沙河', text: 'left' },
+        { x: 3826, y: 2047, name: '巩华城', text: 'left' },
+        { x: 3826, y: 2193, name: '朱辛庄', text: 'left', isExchange: true, to: ['Line8'] },
+        { x: 3658, y: 2317, name: '生命科学园', text: 'left' },
+        { x: 3654, y: 2584, name: '西二旗', text: 'left' }
+      ]
+    })
+    // Line 16
+    this.drawLine(svg, {
+      d: `M1850 1868 H2658
+      C2923 1905, 2884 2010 2884 2556`,
+      color: '#5f9537',
+      stationsData: [
+        { x: 1850, y: 1868, name: '北安河', text: 'left' },
+        { x: 2052, y: 1868, name: '温阳路', text: 'left' },
+        { x: 2256, y: 1868, name: '稻香湖路', text: 'left' },
+        { x: 2458, y: 1868, name: '屯佃', text: 'left' },
+        { x: 2658, y: 1868, name: '永丰', text: 'left' },
+        { x: 2824, y: 1934, name: '永丰南', text: 'left' },
+        { x: 2884, y: 2086, name: '西北旺', text: 'left' },
+        { x: 2884, y: 2242, name: '马连洼', text: 'left' },
+        { x: 2884, y: 2369, name: '农大南路', text: 'left' },
+        { x: 2884, y: 2556, name: '西苑', text: 'left', isExchange: true, to: ['Line4'] }
+      ]
+    })
+    // Line JICHANG
+    this.drawLine(svg, {
+      d: `M5362 3698
+      C5530 3721, 5600 3647 5680 3543
+      C5809 3364, 5734 3373 6826 3138
+      C7100 3050, 7336 3050 7335 2554
+      M7235 2946
+      C6981 3027, 6960 2974 6971 2554
+      M6971 2554
+      C6957 3040, 6932 3067 6819 3139`,
+      color: '#8882a3',
+      stationsData: [
+        { x: 5362, y: 3698, name: '东直门', text: 'left', isExchange: true, to: ['Line13'] },
+        { x: 5815.5, y: 3391.5, name: '三元桥', text: 'left', isExchange: true, to: ['Line10'] },
+        { x: 7335, y: 2554, name: '3号航天楼', text: 'left' },
+        { x: 6971, y: 2554, name: '2号航天楼', text: 'left' }
+      ]
+    })
+
     // YIZHUANG Line:
     this.drawLine(svg, {
       d:`M5048.5 5345.5 ,V5536.5
