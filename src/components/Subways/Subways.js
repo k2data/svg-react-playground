@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import styles from './Subways.css'
 import { select } from 'd3-selection'
+import { Line10 } from './SubwayLine'
 import Line1 from './Line1'
 import Line4 from './Line4'
 
@@ -41,6 +42,8 @@ export class Subways extends Component {
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
 
+    // Line10
+    this.drawLine(svg, Line10)
     // Line 7:
     this.drawLine(svg, {
       d: `M3076 4480
