@@ -279,7 +279,7 @@ export class Subways extends Component {
       <div className={styles['canvas']} ref='canvas'
         onClick={this.handleClickOnCanvas}
       >
-        <img src='/images/subway_map.jpg' className={styles['img-layer']} />
+        <img src='/images/subway_map.jpg' className={styles['img-layer']} style={{ opacity: 0.2 }} />
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
