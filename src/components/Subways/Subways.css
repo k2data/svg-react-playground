@@ -9,7 +9,7 @@
 }
 
 .img-layer {
-  /*opacity: .1;*/
+  opacity: .2;
   composes: size;
 }
 
@@ -37,5 +37,5 @@
 }
 
 .station--text {
-  font-size: 24px;
+  font-size: 48px;
 }
