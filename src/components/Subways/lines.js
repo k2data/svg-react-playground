@@ -114,9 +114,9 @@ const line4 = {
     { x: 4129, y: 4173, name: '灵境胡同', text: 'left' },
     { x: 4129, y: 4305, name: '西单', text: 'top-right', isExchange: true, to: [LINE_1] },
     { x: 4129, y: 4538, name: '宣武门', text: 'top-left', isExchange: true, to: [LINE_2] },
-    { x: 4129, y: 4683, name: '菜市口', text: 'bottom-left', isExchange: true, to: [LINE_7] },
+    { x: 4129, y: 4680, name: '菜市口', text: 'bottom-left', isExchange: true, to: [LINE_7] },
     { x: 4129, y: 4852, name: '陶然亭', text: 'right' },
-    { x: 4129, y: 4998, name: '北京南站', text: 'left', isExchange: true, to: [LINE_4] },
+    { x: 4129, y: 4995, name: '北京南站', text: 'left', isExchange: true, to: [LINE_14] },
     { x: 4129, y: 5170, name: '马家堡', text: 'left' },
     { x: 4129, y: 5348, name: '角门西', text: 'top-left', isExchange: true, to: [LINE_10] },
     { x: 4129, y: 5469, name: '公益西桥', text: 'left' },
@@ -222,7 +222,7 @@ const line7 = {
     { x: 3280, y: 4680, name: '湾子', text: 'bottom' },
     { x: 3540, y: 4680, name: '达官营', text: 'bottom' },
     { x: 3820, y: 4680, name: '广安门内', text: 'top' },
-    { x: 4124, y: 4680, name: '菜市口', text: 'bottom-left', isExchange: true, to: [LINE_4] },
+    { x: 4129, y: 4680, name: '菜市口', text: 'bottom-left', isExchange: true, to: [LINE_4] },
     { x: 4348, y: 4680, name: '虎坊桥', text: 'bottom' },
     { x: 4555, y: 4680, name: '珠市口', text: 'bottom' },
     { x: 4805, y: 4680, name: '桥湾', text: 'top' },
@@ -287,12 +287,12 @@ const line9 = {
     { x: 3076, y: 4300, name: '军事博物馆', text: 'top-right', isExchange: true, to: [LINE_1] },
     { x: 3076, y: 4480, name: '北京西站', text: 'top-right', isExchange: true, to: [LINE_7] },
     { x: 2940, y: 4572, name: '六里桥东', text: 'bottom-right-lean' },
-    { x: 2832, y: 4640, name: '六里桥', text: 'top-left', isExchange: true, to: [LINE_10] },
+    { x: 2838, y: 4640, name: '六里桥', text: 'top-left', isExchange: true, to: [LINE_10] },
     { x: 2700, y: 4936, name: '七里庄', text: 'top-left', isExchange: true, to: [LINE_14] },
-    { x: 2700, y: 5112, name: '丰台东大街', text: 'left' },
-    { x: 2700, y: 5236, name: '丰台南路', text: 'left' },
-    { x: 2700, y: 5348, name: '科怡路', text: 'left' },
-    { x: 2700, y: 5488, name: '丰台科技园', text: 'left' },
+    { x: 2700, y: 5113, name: '丰台东大街', text: 'left' },
+    { x: 2700, y: 5235, name: '丰台南路', text: 'left' },
+    { x: 2700, y: 5353, name: '科怡路', text: 'left' },
+    { x: 2700, y: 5485, name: '丰台科技园', text: 'left' },
     { x: 2700, y: 5632, name: '郭公庄', text: 'right', isExchange: true, to: [LINE_FANGSHAN] }
   ]
 }
@@ -342,7 +342,7 @@ const line10 = {
     { x: 2838, y: 4307, name: '公主坟', text: 'bottom-left', isExchange: true, to: [LINE_1] },
     { x: 2838, y: 4480, name: '莲花桥', text: 'left' },
     { x: 2838, y: 4640, name: '六里桥', text: 'top-left', isExchange: true, to: [LINE_9] },
-    { x: 2838, y: 4934, name: '西局', text: 'right', isExchange: true, to: [LINE_14] },
+    { x: 2838, y: 4937, name: '西局', text: 'right', isExchange: true, to: [LINE_14] },
     { x: 2838, y: 5150, name: '泥洼', text: 'right' },
     { x: 3035, y: 5348, name: '丰台站', text: 'bottom' },
     { x: 3256, y: 5348, name: '首经贸', text: 'top' },
@@ -364,19 +364,19 @@ const line13 = {
     `,
   color: '#ede611',
   stationsData: [
-    { x: 3767, y: 3698, name: '西直门', text: 'left', isExchange: true, to: [LINE_2, LINE_4] },
+    { x: 3767, y: 3698, name: '西直门', text: 'bottom-left', isExchange: true, to: [LINE_2, LINE_4] },
     { x: 3654, y: 3440, name: '大钟寺', text: 'left' },
-    { x: 3654, y: 3191, name: '知春路', text: 'left', isExchange: true, to: [LINE_10] },
-    { x: 3654, y: 3002, name: '五道口', text: 'left' },
+    { x: 3654, y: 3191, name: '知春路', text: 'bottom-left', isExchange: true, to: [LINE_10] },
+    { x: 3654, y: 3002, name: '五道口', text: 'right' },
     { x: 3654, y: 2838, name: '上地', text: 'left' },
     { x: 3654, y: 2584, name: '西二旗', text: 'left', isExchange: true, to: [LINE_CHANGPING] },
-    { x: 3851.5, y: 2453, name: '龙泽', text: 'top' },
+    { x: 3851.5, y: 2453, name: '龙泽', text: 'bottom' },
     { x: 4074.5, y: 2453, name: '回龙观', text: 'top' },
-    { x: 4389, y: 2453, name: '霍营', text: 'top', isExchange: true, to: [LINE_8] },
-    { x: 5049, y: 2453, name: '立水桥', text: 'top', isExchange: true, to: [LINE_5] },
+    { x: 4389, y: 2453, name: '霍营', text: 'top-right', isExchange: true, to: [LINE_8] },
+    { x: 5049, y: 2453, name: '立水桥', text: 'top-left', isExchange: true, to: [LINE_5] },
     { x: 5452, y: 2606, name: '北苑', text: 'right' },
-    { x: 5452, y: 2908.5, name: '望京西', text: 'right', isExchange: true, to: [LINE_15] },
-    { x: 5452, y: 3191, name: '芍药居', text: 'right', isExchange: true, to: [LINE_10] },
+    { x: 5452, y: 2908.5, name: '望京西', text: 'top-right', isExchange: true, to: [LINE_15] },
+    { x: 5452, y: 3191, name: '芍药居', text: 'top-right', isExchange: true, to: [LINE_10] },
     { x: 5452, y: 3394, name: '光熙门', text: 'right' },
     { x: 5452, y: 3532, name: '柳芳', text: 'right' },
     { x: 5362, y: 3699, name: '东直门', text: 'left', isExchange: true, to: [LINE_2, AIRPORT_EXPRESS] }
@@ -385,8 +385,8 @@ const line13 = {
 
 const line14 = {
   name: LINE_14,
-  d: `M1709 4937 H2834 Z
-    M4127 4995 H6016 C6069 4995, 6100 4942, 6100 4900 V3292
+  d: `M1709 4937 H2838
+    M4129 4995 H6016 C6069 4995, 6100 4942, 6100 4900 V3292
     C6095 3264, 6094 3241, 6063 3210 L5924 3058
     C5882 3021, 5872 2977, 5872 2909 V2575`,
   color: 'rgb(187,145,147)',
@@ -396,28 +396,28 @@ const line14 = {
     { x: 2060, y: 4937, name: '大瓦窑', text: 'top' },
     { x: 2233.5, y: 4937, name: '郭庄子', text: 'bottom' },
     { x: 2477, y: 4937, name: '大井', text: 'bottom' },
-    { x: 2700, y: 4937, name: '七里庄', text: 'bottom', isExchange: true, to: [LINE_9] },
-    { x: 2834, y: 4937, name: '西局', text: 'right', isExchange: true, to: [LINE_10] },
-    { x: 4127, y: 4995, name: '北京南站', text: 'left', isExchange: true, to: [LINE_4] },
+    { x: 2700, y: 4937, name: '七里庄', text: 'top-left', isExchange: true, to: [LINE_9] },
+    { x: 2838, y: 4937, name: '西局', text: 'right', isExchange: true, to: [LINE_10] },
+    { x: 4129, y: 4995, name: '北京南站', text: 'left', isExchange: true, to: [LINE_4] },
     { x: 4338, y: 4995, name: '陶然桥', text: 'bottom', notOpened: true },
     { x: 4577.5, y: 4995, name: '永定门外', text: 'top' },
-    { x: 4796, y: 4995, name: '景泰', text: 'top' },
-    { x: 5049, y: 4995, name: '蒲黄榆', text: 'bottom', isExchange: true, to: [LINE_5] },
+    { x: 4796, y: 4995, name: '景泰', text: 'bottom' },
+    { x: 5049, y: 4995, name: '蒲黄榆', text: 'bottom-right', isExchange: true, to: [LINE_5] },
     { x: 5449, y: 4995, name: '方庄', text: 'bottom' },
-    { x: 5817, y: 4995, name: '十里河', text: 'bottom', isExchange: true, to: [LINE_10] },
+    { x: 5817, y: 4995, name: '十里河', text: 'bottom-left', isExchange: true, to: [LINE_10] },
     { x: 5984, y: 4995, name: '北工大西门', text: 'bottom' },
     { x: 6100, y: 4832, name: '平乐园', text: 'left', notOpened: true },
-    { x: 6100, y: 4682, name: '九龙山', text: 'bottom', isExchange: true, to: [LINE_7] },
-    { x: 6100, y: 4307, name: '大望路', text: 'bottom', isExchange: true, to: [LINE_1] },
-    { x: 6100, y: 4071, name: '金台路', text: 'bottom', isExchange: true, to: [LINE_6] },
+    { x: 6100, y: 4682, name: '九龙山', text: 'top-left', isExchange: true, to: [LINE_7] },
+    { x: 6100, y: 4307, name: '大望路', text: 'bottom-right', isExchange: true, to: [LINE_1] },
+    { x: 6100, y: 4071, name: '金台路', text: 'top-right', isExchange: true, to: [LINE_6] },
     { x: 6100, y: 3887, name: '朝阳公园', text: 'right' },
     { x: 6100, y: 3758.5, name: '枣营', text: 'right' },
     { x: 6100, y: 3628, name: '东风北桥', text: 'right' },
     { x: 6100, y: 3514.5, name: '将台', text: 'right' },
     { x: 6100, y: 3384.5, name: '高家园', text: 'right', notOpened: true },
-    { x: 6031, y: 3175.5, name: '望京南', text: 'right' },
-    { x: 5923, y: 3057, name: '阜通', text: 'right' },
-    { x: 5872, y: 2908.5, name: '望京', text: 'right', isExchange: true, to: [LINE_15] },
+    { x: 6031, y: 3175.5, name: '望京南', text: 'top-right-lean' },
+    { x: 5923, y: 3057, name: '阜通', text: 'top-right-lean' },
+    { x: 5872, y: 2908.5, name: '望京', text: 'bottom-left', isExchange: true, to: [LINE_15] },
     { x: 5872, y: 2818, name: '东湖渠', text: 'right' },
     { x: 5872, y: 2704, name: '来广营', text: 'right' },
     { x: 5872, y: 2575, name: '善各庄', text: 'right' }
@@ -433,10 +433,10 @@ const line15 = {
   color: '#603471',
   stationsData: [
     { x: 3795, y: 2908.5, name: '清华东路西口', text: 'top' },
-    { x: 4038, y: 2908.5, name: '六道口', text: 'top' },
+    { x: 4038, y: 2908.5, name: '六道口', text: 'bottom' },
     { x: 4260, y: 2908.5, name: '北沙滩', text: 'top' },
     { x: 4554.5, y: 2908.5, name: '奥林匹克公园', text: 'bottom-left', isExchange: true, to: [LINE_8] },
-    { x: 4795, y: 2908.5, name: '安立路', text: 'top' },
+    { x: 4795, y: 2908.5, name: '安立路', text: 'bottom' },
     { x: 5049, y: 2908.5, name: '大屯路东', text: 'top-right', isExchange: true, to: [LINE_5] },
     { x: 5245, y: 2908.5, name: '关庄', text: 'bottom' },
     { x: 5452, y: 2908.5, name: '望京西', text: 'top-right', isExchange: true, to: [LINE_13] },
@@ -461,40 +461,39 @@ const line16 = {
   C2923 1905, 2884 2010 2884 2556`,
   color: '#5f9537',
   stationsData: [
-    { x: 1850, y: 1868, name: '北安河', text: 'left' },
-    { x: 2052, y: 1868, name: '温阳路', text: 'left' },
-    { x: 2256, y: 1868, name: '稻香湖路', text: 'left' },
-    { x: 2458, y: 1868, name: '屯佃', text: 'left' },
-    { x: 2658, y: 1868, name: '永丰', text: 'left' },
-    { x: 2824, y: 1934, name: '永丰南', text: 'left' },
-    { x: 2884, y: 2086, name: '西北旺', text: 'left' },
-    { x: 2884, y: 2242, name: '马连洼', text: 'left' },
-    { x: 2884, y: 2369, name: '农大南路', text: 'left' },
-    { x: 2884, y: 2556, name: '西苑', text: 'left', isExchange: true, to: [LINE_4] }
+    { x: 1850, y: 1868, name: '北安河', text: 'bottom' },
+    { x: 2052, y: 1868, name: '温阳路', text: 'top' },
+    { x: 2256, y: 1868, name: '稻香湖路', text: 'bottom' },
+    { x: 2458, y: 1868, name: '屯佃', text: 'top' },
+    { x: 2658, y: 1868, name: '永丰', text: 'top' },
+    { x: 2824, y: 1934, name: '永丰南', text: 'top-right-lean' },
+    { x: 2884, y: 2086, name: '西北旺', text: 'right' },
+    { x: 2884, y: 2242, name: '马连洼', text: 'right' },
+    { x: 2884, y: 2369, name: '农大南路', text: 'right' },
+    { x: 2884, y: 2556, name: '西苑', text: 'top-right', isExchange: true, to: [LINE_4] }
   ]
 }
 
 const lineChangPing = {
   name: LINE_CHANGPING,
   d: `M2425 1335.5 H2615
-  C2665 1336, 2665 1360 2830 1515
-  C2885 1550, 2810 1550 3772 1538
-  C3868 1545, 3810 1625 3830 2180
-  C3827 2225, 3780 2217, 3695 2280
-  C3635 2310, 3655 2370, 3656 2585`,
+  C2665 1335.5, 2670 1358, 2693 1375 L2806 1492
+  C2860 1548, 2888 1537.5, 2920 1537.5 H3778
+  C3813 1537.5, 3826 1556, 3826 1591 V2191.5
+  C3770 2266, 3654 2270, 3654 2338, V2584`,
   color: '#d274a6',
   stationsData: [
-    { x: 2425, y: 1335.5, name: '昌平西山口', text: 'left' },
-    { x: 2693, y: 1375, name: '十三陵景区', text: 'right' },
+    { x: 2425, y: 1335.5, name: '昌平西山口', text: 'bottom' },
+    { x: 2693, y: 1375, name: '十三陵景区', text: 'top-right-lean' },
     { x: 2990, y: 1537.5, name: '昌平', text: 'top' },
     { x: 3341, y: 1537.5, name: '昌平东关', text: 'top' },
     { x: 3716, y: 1537.5, name: '北邵洼', text: 'top' },
-    { x: 3826, y: 1698, name: '南邵', text: 'left' },
-    { x: 3826, y: 1806, name: '沙河高教园', text: 'left' },
+    { x: 3826, y: 1698, name: '南邵', text: 'right' },
+    { x: 3826, y: 1806, name: '沙河高教园', text: 'right' },
     { x: 3826, y: 1926, name: '沙河', text: 'left' },
     { x: 3826, y: 2047, name: '巩华城', text: 'left' },
     { x: 3826, y: 2191.5, name: '朱辛庄', text: 'left', isExchange: true, to: [LINE_8] },
-    { x: 3658, y: 2317, name: '生命科学园', text: 'left' },
+    { x: 3657.9248046875, y: 2317.827880859375, name: '生命科学园', text: 'left' },
     { x: 3654, y: 2584, name: '西二旗', text: 'left' }
   ]
 }
@@ -513,8 +512,8 @@ const airportExpress = {
   stationsData: [
     { x: 5362, y: 3698, name: '东直门', text: 'left', isExchange: true, to: [LINE_13] },
     { x: 5815.5, y: 3391.5, name: '三元桥', text: 'left', isExchange: true, to: [LINE_10] },
-    { x: 7335, y: 2554, name: '3号航天楼', text: 'left' },
-    { x: 6971, y: 2554, name: '2号航天楼', text: 'left' }
+    { x: 7335, y: 2554, name: '3号航天楼', text: 'right' },
+    { x: 6971, y: 2554, name: '2号航天楼', text: 'right' }
   ]
 }
 
@@ -529,13 +528,13 @@ const lineYiZhuang = {
   stationsData: [
      { x: 5048.5, y: 5345.5, name: '宋家庄', text: 'bottom-right', isExchange: true, to: [LINE_8, LINE_10] },
      { x: 5048.5, y: 5536.5, name: '肖村', text: 'left' },
-     { x: 5125, y: 5614.5, name: '小红门', text: 'right' },
-     { x: 5202, y: 5689.5, name: '旧宫', text: 'left' },
-     { x: 5289, y: 5768.5, name: '亦庄桥', text: 'right' },
-     { x: 5359.5, y: 5840.5, name: '亦庄文化园', text: 'left' },
-     { x: 5438.5, y: 5914.5, name: '万源街', text: 'right' },
-     { x: 5527.5, y: 6001.5, name: '荣京东街', text: 'left' },
-     { x: 5608.5, y: 6076.5, name: '荣昌东街', text: 'right' },
+     { x: 5125, y: 5614.5, name: '小红门', text: 'top-right-lean' },
+     { x: 5202, y: 5689.5, name: '旧宫', text: 'bottom-left-lean' },
+     { x: 5289, y: 5768.5, name: '亦庄桥', text: 'top-right-lean' },
+     { x: 5359.5, y: 5840.5, name: '亦庄文化园', text: 'bottom-left-lean' },
+     { x: 5438.5, y: 5914.5, name: '万源街', text: 'top-right-lean' },
+     { x: 5527.5, y: 6001.5, name: '荣京东街', text: 'bottom-left-lean' },
+     { x: 5608.5, y: 6076.5, name: '荣昌东街', text: 'top-right-lean' },
      { x: 5723.5, y: 6115.5, name: '同济南路', text: 'bottom' },
      { x: 5919, y: 6115.5, name: '经海路', text: 'bottom' },
      { x: 6112, y: 6115.5, name: '次渠南', text: 'top' },
@@ -546,23 +545,24 @@ const lineYiZhuang = {
 
 const lineFangShan = {
   name: LINE_FANGSHAN,
-  d: `M2700 5632
-       L1983 6360
-       L1230 6360
+  d: `M2700 5632 V5636
+       L1989 6356
+       L1230 6356
      `,
-  color: '#D85F34',
+  // color: '#D85F34',
+  color: 'rgba(0, 0, 0, .1)',
   stationsData: [
      { x: 2700, y: 5632, name: '郭公庄', text: 'right', isExchange: true, to: [LINE_9] },
-     { x: 2586, y: 5745, name: '大葆台', text: 'left' },
-     { x: 2481, y: 5853, name: '稻田', text: 'right' },
-     { x: 2385, y: 5949, name: '长阳', text: 'left' },
-     { x: 2283, y: 6051, name: '篱笆房', text: 'right' },
-     { x: 2196, y: 6141, name: '广阳城', text: 'left' },
-     { x: 2097, y: 6237, name: '良乡大学城北', text: 'right' },
-     { x: 1983, y: 6360, name: '良乡大学城', text: 'right' },
-     { x: 1779, y: 6360, name: '良乡大学城西', text: 'bottom' },
-     { x: 1536, y: 6360, name: '良乡南关', text: 'top' },
-     { x: 1230, y: 6360, name: '苏庄', text: 'bottom' }
+     { x: 2592.4951171875, y: 5744.86572265625, name: '大葆台', text: 'top-left-lean' },
+     { x: 2487.098388671875, y: 5851.5966796875, name: '稻田', text: 'bottom-right-lean' },
+     { x: 2390.484619140625, y: 5949.43310546875, name: '长阳', text: 'top-left-lean' },
+     { x: 2287.7578125, y: 6053.46044921875, name: '篱笆房', text: 'bottom-right-lean' },
+     { x: 2201.82421875, y: 6140.48193359375, name: '广阳城', text: 'top-left-lean' },
+     { x: 2106.0537109375, y: 6237.46484375, name: '良乡大学城北', text: 'bottom-right-lean' },
+     { x: 1986.5, y: 6356, name: '良乡大学城', text: 'bottom-right-lean' },
+     { x: 1782, y: 6356, name: '良乡大学城西', text: 'bottom' },
+     { x: 1539, y: 6356, name: '良乡南关', text: 'top' },
+     { x: 1236, y: 6356, name: '苏庄', text: 'bottom' }
   ]
 }
 

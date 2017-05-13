@@ -35,9 +35,9 @@ export class Subways extends Component {
 
   componentDidMount () {
     this.draw()
-    // const line = this.refs.svg.querySelector('g#LINE_8 > path')
+    // const line = this.refs.svg.querySelector('g#LINE_CHANGPING > path')
     // console.log(line.getTotalLength())
-    // const currentP = line.getPointAtLength(1067.5)
+    // const currentP = line.getPointAtLength(2326.8)
     // console.log(currentP)
     // this.svg.append('circle')
     //   .attr('cx', currentP.x)
