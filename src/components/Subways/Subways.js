@@ -10,6 +10,7 @@ const d3 = {
 
 const lineWidth = 37
 const stationR = 22
+const fontSize = 48
 
 type Props = {
 }
@@ -105,6 +106,8 @@ export class Subways extends Component {
     stations.append('text')
       .attr('x', (d) => d.x + this.textX(d.text))
       .attr('y', (d) => d.y + this.textY(d.text))
+      .attr('dy', fontSize / 2 - fontSize / 12)
+      .attr('font-size', fontSize)
       .attr('class', styles['station--text'])
       .attr('text-anchor', (d) => this.textAnchor(d.text))
       .text((d) => d.isExchange ? '' : d.name)
@@ -112,14 +115,18 @@ export class Subways extends Component {
 
   textX (position: string): number {
     switch (position) {
-      case 'left':
+      case 'left': case 'bottom-left': case 'top-left':
         return -40
       case 'top': case 'bottom':
         return 0
-      case 'right':
+      case 'right': case 'bottom-right': case 'top-right':
         return 40
+      case 'bottom-right-lean': case 'top-right-lean':
+        return 20
+      case 'bottom-left-lean': case 'top-left-lean':
+        return -20
       default:
-        return 40
+        return 0
     }
   }
 
@@ -128,21 +135,39 @@ export class Subways extends Component {
       case 'left': case 'right':
         return 0
       case 'top':
-        return -40
+      case 'top-right':
+      case 'top-left':
+        return -70
+      case 'top-right-lean':
+      case 'top-left-lean':
+        return -60
       case 'bottom':
-        return 80
+      case 'bottom-right':
+      case 'bottom-left':
+        return 70
+      case 'bottom-right-lean':
+      case 'bottom-left-lean':
+        return 60
       default:
-        return 40
+        return 0
     }
   }
 
   textAnchor (position: string): string {
     switch (position) {
       case 'left':
+      case 'top-left':
+      case 'top-left-lean':
+      case 'bottom-left':
+      case 'bottom-left-lean':
         return 'end'
       case 'top': case 'bottom':
         return 'middle'
       case 'right':
+      case 'top-right':
+      case 'top-right-lean':
+      case 'bottom-right':
+      case 'bottom-right-lean':
         return 'start'
       default:
         return 'start'
