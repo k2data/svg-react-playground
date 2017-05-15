@@ -9,7 +9,7 @@
 }
 
 .img-layer {
-  opacity: .2;
+  opacity: 0;
   composes: size;
 }
 
@@ -18,21 +18,30 @@
   position: absolute;
   top: 0;
   left: 0;
+
+  :global(#tiananmen) {
+    opacity: 1;
+  }
+}
+
+.line {
+  fill: none;
+  opacity: 1;
+}
+
+.station {
+  opacity: 1;
 }
 
 .station--circle {
-  /*fill: red;*/
+  opacity: 1;
   fill: rgb(255, 255, 255);
   stroke: black;
   stroke-width: 4px;
-  opacity: 1;
 }
 
 .active--circle {
   fill: yellow;
-  /*fill: none;
-  stroke: black;
-  stroke-width: 4px;*/
   opacity: .7;
 }
 

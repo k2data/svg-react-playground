@@ -19,6 +19,8 @@ export class Subways extends Component {
   props: Props
   svg: Object
   draw: () => void
+  animate: () => void
+  showActivePoint: () => void
   drawLine: () => void
   textX: (position: string) => number
   textY: (position: string) => number
@@ -28,6 +30,8 @@ export class Subways extends Component {
   constructor (props: Props) {
     super(props)
     this.draw = this.draw.bind(this)
+    this.animate = this.animate.bind(this)
+    this.showActivePoint = this.showActivePoint.bind(this)
     this.drawLine = this.drawLine.bind(this)
     this.textAnchor = this.textAnchor.bind(this)
     this.handleClickOnCanvas = this.handleClickOnCanvas.bind(this)
@@ -35,15 +39,30 @@ export class Subways extends Component {
 
   componentDidMount () {
     this.draw()
-    // const line = this.refs.svg.querySelector('g#LINE_CHANGPING > path')
-    // console.log(line.getTotalLength())
-    // const currentP = line.getPointAtLength(2326.8)
-    // console.log(currentP)
-    // this.svg.append('circle')
-    //   .attr('cx', currentP.x)
-    //   .attr('cy', currentP.y)
-    //   .attr('r', stationR)
-    //   .attr('class', styles['active--circle'])
+    this.animate()
+    // this.showActivePoint()
+  }
+
+  showActivePoint () {
+    const line = this.refs.svg.querySelector('g#LINE_CHANGPING > path')
+    console.log(line.getTotalLength())
+    const currentP = line.getPointAtLength(2326.8)
+    console.log(currentP)
+    this.svg.append('circle')
+      .attr('cx', currentP.x)
+      .attr('cy', currentP.y)
+      .attr('r', stationR)
+      .attr('class', styles['active--circle'])
+  }
+
+  animate () {
+    const tiananmen = this.refs.svg.querySelector('#tiananmen')
+    const lines = this.refs.svg.querySelectorAll(`.${styles['line']}`)
+    const stations = this.refs.svg.querySelectorAll(`.${styles['station']}`)
+
+    console.log(tiananmen)
+    console.log(lines)
+    console.log(stations)
   }
 
   draw () {
@@ -102,6 +121,15 @@ export class Subways extends Component {
       .attr('width', stationR / 2 * 3)
       .attr('height', stationR / 2 * 3)
       .attr('class', styles['exchange-station'])
+
+    stations.append('text')
+      .attr('x', (d) => d[1][0].x + this.textX(d[1][0].text))
+      .attr('y', (d) => d[1][0].y + this.textY(d[1][0].text))
+      .attr('dy', fontSize / 2 - fontSize / 12)
+      .attr('font-size', fontSize)
+      .attr('class', styles['station--text'])
+      .attr('text-anchor', (d) => this.textAnchor(d[1][0].text))
+      .text((d) => d[1][0].name)
   }
 
   drawLine (svg: Object, options: Object) {
@@ -113,19 +141,20 @@ export class Subways extends Component {
       .attr('d', d)
       .attr('stroke', color || 'black')
       .attr('fill', 'none')
+      .attr('class', styles['line'])
       .attr('stroke-width', lineWidth)
 
     const stations = line.selectAll('g')
       .data(stationsData)
       .enter()
       .append('g')
-      // .attr('class', styles['station'])
+      .attr('class', styles['station'])
 
     stations.append('circle')
       .attr('cx', (d) => d.x)
       .attr('cy', (d) => d.y)
       .attr('r', stationR)
-      .attr('class', `${styles['station--circle']} ${styles['station']}`)
+      .attr('class', `${styles['station--circle']}`)
 
     stations.append('text')
       .attr('x', (d) => d.x + this.textX(d.text))
@@ -212,7 +241,7 @@ export class Subways extends Component {
       <div className={styles['canvas']} ref='canvas'
         onClick={this.handleClickOnCanvas}
       >
-        <img src='/images/subway_map.jpg' className={styles['img-layer']} />
+        <img src='/images/subway_map.jpg' className={styles['img-layer']} id='test' />
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
