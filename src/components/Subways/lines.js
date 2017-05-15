@@ -569,3 +569,16 @@ export const lines = [
   line1, line2, line4, line5, line6, line7, line8, line9, line10, line13, line14, line15,
   line16, lineChangPing, airportExpress, lineYiZhuang, lineFangShan
 ]
+
+export const exchangeStations = lines
+  .reduce((result, line) => {
+    return result.concat(line.stationsData.filter((station) => station.isExchange))
+  }, [])
+  .reduce((result, line) => {
+    if (result[line.name]) {
+      result[line.name].push(line)
+    } else {
+      result[line.name] = [line]
+    }
+    return result
+  }, {})

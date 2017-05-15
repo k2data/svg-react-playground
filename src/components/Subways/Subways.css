@@ -25,7 +25,7 @@
   fill: rgb(255, 255, 255);
   stroke: black;
   stroke-width: 4px;
-  opacity: .9;
+  opacity: 1;
 }
 
 .active--circle {
@@ -37,4 +37,7 @@
 }
 
 .station--text {
+}
+
+.exchange-station {
 }

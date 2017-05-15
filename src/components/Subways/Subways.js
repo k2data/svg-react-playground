@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import styles from './Subways.css'
 import { select } from 'd3-selection'
-import { lines } from './lines'
+import { lines, exchangeStations } from './lines'
 
 const d3 = {
   select
@@ -48,6 +48,7 @@ export class Subways extends Component {
 
   draw () {
     const svg = d3.select(this.refs.svg)
+
     svg.append('path')
       .attr('id', 'tiananmen')
       .attr('d', `M971.334,413.078l-33.667-113.405H795.911v28.35H666.558v-28.35
@@ -78,6 +79,29 @@ export class Subways extends Component {
     // const height = +svg.attr('height')
     const drawLine = this.drawLine.bind(null, svg)
     lines.map((line) => drawLine(line))
+
+    const stationsData = Object.entries(exchangeStations)
+    const stations = svg.append('g')
+      .attr('id', 'exchangeStations')
+      .selectAll('use')
+      .data(stationsData)
+      .enter()
+      .append('g')
+      .attr('class', styles['station'])
+    stations
+      .append('circle')
+      .attr('cx', (d) => d[1][0].x)
+      .attr('cy', (d) => d[1][0].y)
+      .attr('r', stationR * 3 / 2)
+      .attr('class', styles['station--circle'])
+    stations
+      .append('use')
+      .attr('xlink:href', '#exchange')
+      .attr('x', (d) => d[1][0].x - stationR / 2 * 3 / 2)
+      .attr('y', (d) => d[1][0].y - stationR / 2 * 3 / 2)
+      .attr('width', stationR / 2 * 3)
+      .attr('height', stationR / 2 * 3)
+      .attr('class', styles['exchange-station'])
   }
 
   drawLine (svg: Object, options: Object) {
@@ -101,7 +125,7 @@ export class Subways extends Component {
       .attr('cx', (d) => d.x)
       .attr('cy', (d) => d.y)
       .attr('r', stationR)
-      .attr('class', styles['station--circle'])
+      .attr('class', `${styles['station--circle']} ${styles['station']}`)
 
     stations.append('text')
       .attr('x', (d) => d.x + this.textX(d.text))
@@ -196,7 +220,30 @@ export class Subways extends Component {
           height='9448'
           viewBox='0 0 9448 6719'
           ref='svg'
-        />
+        >
+          <symbol id='exchange' viewBox='0 0 1024 1024'>
+            <path d={`M112.228037 296.934806c0 0 80.84119-125.866662
+              208.754464-193.404871s285.502429-48.095391
+              388.856355 17.396205 138.146337 120.750131
+              138.146337 120.750131l89.027639-51.16531
+              c0 0 18.419512-9.209756 18.419512 12.279674
+              s0 321.318146 0 321.318146 0 28.652574-21.48943 18.419512
+              c-18.078751-8.609075-213.596749-120.784924-275.207969
+              -156.176992-33.830503-15.226796-4.107551-27.595498-4.107551-27.595498l85.910649-49.541323
+              c0 0-49.004087-61.923328-120.724549-94.717222-76.773548-40.359196-148.645458
+              -45.144176-236.690724-11.608386-57.407478 21.86703-124.999922 77.853136-173.680645 160.560836
+              C112.228037 296.934806 112.228037 296.934806 112.228037 296.934806zM910.406872 721.592552
+              c0 0-80.84119 125.866662-208.754464 193.404871s-285.502429 48.095391
+              -388.856355-17.396205-138.146337-120.750131-138.146337-120.750131l-89.027639 51.16531
+              c0 0-18.419512 9.209756-18.419512-12.279674s0-321.318146 0-321.318146 0-28.652574 21.48943-18.419512
+              c18.078751 8.609075 213.596749 120.784924 275.207969 156.176992 33.830503 15.226796
+              4.107551 27.595498 4.107551 27.595498l-85.910649 49.541323
+              c0 0 49.004087 61.923328 120.724549 94.717222 76.773548 40.359196 148.645458 45.144176
+              236.690724 11.608386 57.407478-21.86703 124.999922-77.853136 173.680645-160.560836
+              C910.406872 721.592552 910.406872 721.592552 910.406872 721.592552z`}
+             />
+          </symbol>
+        </svg>
       </div>
     )
   }
