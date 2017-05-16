@@ -68,6 +68,13 @@ export class Subways extends Component {
   }
 
   componentDidMount () {
+    const offset = {}
+    if (document && document.body) {
+      offset.x = document.body.clientWidth / 2
+      offset.y = document.body.clientHeight / 2
+    }
+    window.scrollTo(centerOfChina.x - offset.x || 0,
+      centerOfChina.y - offset.y || 0)
     this.draw()
     this.animate()
     // this.showActivePoint()
@@ -249,32 +256,13 @@ export class Subways extends Component {
       .selectAll('text')
       .data([
         {
-          name: 'K2Data前端组', x: 6860, y: 5900
+          name: 'K2Data前端组', x: 7200, y: 5900
         },
         {
-          name: '金风前端（袁振，彭小华）', x: 6860, y: 6200
+          name: '金风前端（袁振，彭小华）', x: 7200, y: 6200
         },
         {
-          name: 'K2Data UI（贾健）', x: 6860, y: 6500
-        }
-      ])
-      .enter()
-      .append('text')
-      .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y)
-      .text((d) => d.name)
-    svg.append('g')
-      .attr('id', 'authors')
-      .selectAll('text')
-      .data([
-        {
-          name: 'K2Data前端组', x: 6860, y: 5900
-        },
-        {
-          name: '金风前端（袁振，彭小华）', x: 6860, y: 6200
-        },
-        {
-          name: 'K2Data UI（贾健）', x: 6860, y: 6500
+          name: 'K2Data UI（贾健）', x: 7200, y: 6500
         }
       ])
       .enter()
@@ -287,10 +275,10 @@ export class Subways extends Component {
       .selectAll('use')
       .data([
         {
-          x: 7000, y: 5960
+          x: 7200, y: 5960
         },
         {
-          x: 7000, y: 6260
+          x: 7200, y: 6260
         }
       ])
       .enter()
