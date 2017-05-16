@@ -12,6 +12,16 @@ import { lines, exchangeStations } from './lines'
 //   select, transition, ...eases
 // }
 
+// standard shim
+window.requestAnimFrame = (function () {
+  return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    function (callback) {
+      window.setTimeout(callback, 1000 / 60)
+    }
+})()
+
 type Props = {
 }
 
@@ -131,6 +141,31 @@ export class Subways extends Component {
         station
           .transition(transOfStation)
           .style('opacity', 1)
+      })
+
+    stations
+      .each(function () {
+        const exchange = this.querySelector('use')
+        if (!exchange) return
+        const circle = this.querySelector('circle')
+        const stationEx = d3.select(exchange)
+
+        const cx = circle.getAttribute('cx')
+        const cy = circle.getAttribute('cy')
+        const total = 800
+        let start = null
+        const rotateStep = (timestamp) => {
+          if (!start) start = timestamp
+          const progress = timestamp - start
+          let degree = (progress / total * 360) % 360
+
+          stationEx
+            .attr('transform', `rotate(${degree}, ${cx}, ${cy})`)
+          circle.setAttribute('stroke-dashoffset', degree)
+          window.requestAnimationFrame(rotateStep)
+        }
+
+        window.requestAnimationFrame(rotateStep)
       })
   }
 
