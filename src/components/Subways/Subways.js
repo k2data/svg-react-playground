@@ -56,9 +56,17 @@ export class Subways extends Component {
   }
 
   animate () {
-    const tiananmen = this.refs.svg.querySelector('#tiananmen')
-    const lines = this.refs.svg.querySelectorAll(`.${styles['line']}`)
-    const stations = this.refs.svg.querySelectorAll(`.${styles['station']}`)
+    const svg = d3.select(this.refs.svg)
+    const tiananmen = svg.select('#tiananmen')
+    const lines = svg.selectAll(`.${styles['line']}`)
+    const stations = svg.selectAll(`.${styles['station']}`)
+
+    // tiananmen scale to 6
+    // lines stroke-dasharray and offset = lines length
+    // hide stations
+    stations
+      .classed(`${styles['hide']}`, true)
+    // tiananmen
 
     console.log(tiananmen)
     console.log(lines)

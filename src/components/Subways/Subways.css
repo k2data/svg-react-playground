@@ -33,6 +33,10 @@
   opacity: 1;
 }
 
+.hide {
+  opacity: 0;
+}
+
 .station--circle {
   opacity: 1;
   fill: rgb(255, 255, 255);
