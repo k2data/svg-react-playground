@@ -22,6 +22,11 @@
   :global(#tiananmen) {
     opacity: 1;
   }
+
+  :global(#authors text) {
+    font-size: 64px;
+    fill: #333;
+  }
 }
 
 .line {
@@ -31,10 +36,6 @@
 
 .station {
   opacity: 1;
-}
-
-.hide {
-  opacity: 0;
 }
 
 .station--circle {

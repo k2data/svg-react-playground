@@ -1,18 +1,36 @@
 // @flow
 import React, { Component } from 'react'
 import styles from './Subways.css'
-import { select } from 'd3-selection'
+import * as d3 from 'd3'
+// import { select } from 'd3-selection'
+// import { transition } from 'd3-transition'
+// import * as eases from 'd3-ease'
 import { lines, exchangeStations } from './lines'
 
-const d3 = {
-  select
+// const d3 = Object.assign({}, require('d3-selection'), require('d3-transition'), require('d3-ease'))
+// const d3 = {
+//   select, transition, ...eases
+// }
+
+type Props = {
 }
+
+// type Point = {
+//   x: number,
+//   y: number
+// }
 
 const lineWidth = 37
 const stationR = 22
 const fontSize = 48
 
-type Props = {
+const centerOfChina = {
+  x: 4551.657856,
+  y: 4218.188032
+}
+const centerOfOrigin = {
+  x: 971.334 - 944.45 / 2,
+  y: 413.078 - 283.51 / 2
 }
 
 export class Subways extends Component {
@@ -20,6 +38,7 @@ export class Subways extends Component {
   svg: Object
   draw: () => void
   animate: () => void
+  scaleTranslate: (scale: number) => string
   showActivePoint: () => void
   drawLine: () => void
   textX: (position: string) => number
@@ -31,6 +50,7 @@ export class Subways extends Component {
     super(props)
     this.draw = this.draw.bind(this)
     this.animate = this.animate.bind(this)
+    this.scaleTranslate = this.scaleTranslate.bind(this)
     this.showActivePoint = this.showActivePoint.bind(this)
     this.drawLine = this.drawLine.bind(this)
     this.textAnchor = this.textAnchor.bind(this)
@@ -61,16 +81,66 @@ export class Subways extends Component {
     const lines = svg.selectAll(`.${styles['line']}`)
     const stations = svg.selectAll(`.${styles['station']}`)
 
-    // tiananmen scale to 6
-    // lines stroke-dasharray and offset = lines length
-    // hide stations
+    // Init:
     stations
-      .classed(`${styles['hide']}`, true)
-    // tiananmen
+      .style('opacity', 0)
+    lines.each(function () {
+      const length = this.getTotalLength()
+      const line = d3.select(this)
+      line.style('stroke-dasharray', length)
+      line.style('stroke-dashoffset', length)
+    })
+    tiananmen
+      .attr('transform', this.scaleTranslate(4))
 
-    console.log(tiananmen)
-    console.log(lines)
-    console.log(stations)
+    // Begin animate
+    const transOfTiananmen = d3.transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+    tiananmen
+      .transition(transOfTiananmen)
+      .attrTween('transform', () => {
+        return (t) => {
+          // from 4 to 0.384
+          const scale = 4 - (4 - 0.384) * t
+          return this.scaleTranslate(scale)
+        }
+      })
+
+    const transOfLines = d3.transition()
+      .delay(1000)
+      .duration(1600)
+      .ease(d3.easeLinear)
+    lines
+      .transition(transOfLines)
+      .styleTween('stroke-dashoffset', function () {
+        const length = this.getTotalLength()
+        return (t) => {
+          // from length to 0
+          return length - length * t
+        }
+      })
+
+    stations
+      .each(function () {
+        const transOfStation = d3.transition()
+          .delay(2600 + Math.random() * 1000)
+          .duration(601)
+          .ease(d3.easePoly)
+        const station = d3.select(this)
+        station
+          .transition(transOfStation)
+          .style('opacity', 1)
+      })
+  }
+
+  scaleTranslate (scale: number): string {
+    const t = {
+      x: centerOfChina.x - centerOfOrigin.x + -centerOfOrigin.x * (scale - 1),
+      y: centerOfChina.y - centerOfOrigin.y + -centerOfOrigin.y * (scale - 1)
+    }
+
+    return `translate(${t.x}, ${t.y}) scale(${scale})`
   }
 
   draw () {
@@ -100,7 +170,7 @@ export class Subways extends Component {
       .attr('fill-rule', 'evenodd')
       .attr('clip-rule', 'evenodd')
       .attr('fill', '#BC1515')
-      .attr('style', 'transform: translate(4360px, 4106px) scale(.4) ;')
+      .attr('transform', this.scaleTranslate(0.384))
     this.svg = svg
     // const width = +svg.attr('width')
     // const height = +svg.attr('height')
@@ -138,6 +208,63 @@ export class Subways extends Component {
       .attr('class', styles['station--text'])
       .attr('text-anchor', (d) => this.textAnchor(d[1][0].text))
       .text((d) => d[1][0].name)
+
+    svg.append('g')
+      .attr('id', 'authors')
+      .selectAll('text')
+      .data([
+        {
+          name: 'K2Data前端组', x: 6860, y: 5900
+        },
+        {
+          name: '金风前端（袁振，彭小华）', x: 6860, y: 6200
+        },
+        {
+          name: 'K2Data UI（贾健）', x: 6860, y: 6500
+        }
+      ])
+      .enter()
+      .append('text')
+      .attr('x', (d) => d.x)
+      .attr('y', (d) => d.y)
+      .text((d) => d.name)
+    svg.append('g')
+      .attr('id', 'authors')
+      .selectAll('text')
+      .data([
+        {
+          name: 'K2Data前端组', x: 6860, y: 5900
+        },
+        {
+          name: '金风前端（袁振，彭小华）', x: 6860, y: 6200
+        },
+        {
+          name: 'K2Data UI（贾健）', x: 6860, y: 6500
+        }
+      ])
+      .enter()
+      .append('text')
+      .attr('x', (d) => d.x)
+      .attr('y', (d) => d.y)
+      .text((d) => d.name)
+    svg.append('g')
+      .attr('id', 'loves')
+      .selectAll('use')
+      .data([
+        {
+          x: 7000, y: 5960
+        },
+        {
+          x: 7000, y: 6260
+        }
+      ])
+      .enter()
+      .append('use')
+      .attr('xlink:href', '#love')
+      .attr('width', 100)
+      .attr('height', 100)
+      .attr('x', (d) => d.x)
+      .attr('y', (d) => d.y)
   }
 
   drawLine (svg: Object, options: Object) {
@@ -279,6 +406,25 @@ export class Subways extends Component {
               236.690724 11.608386 57.407478-21.86703 124.999922-77.853136 173.680645-160.560836
               C910.406872 721.592552 910.406872 721.592552 910.406872 721.592552z`}
              />
+          </symbol>
+          <symbol id='love' viewBox='0 0 1024 1024'>
+            <path d={`M746.057245 86.961584
+              c197.262736-2.990101 294.124807 173.73488 237.950414
+              377.404536-51.087539 185.235818-176.210257 301.091476-314.992067
+              398.860197-25.550932 17.999956-115.617228 81.21879-158.957315
+              73.139787-74.03825-13.800307-126.778428-64.404846-177.487344
+              -103.372346-44.193525-33.95944-83.817987-72.111364-122.875538-111.173009
+              C127.826805 639.944997 53.954331 556.273343 27.330974 418.532235
+              c-4.383844-22.681582-3.999081-57.647955 0-79.966263C47.993572
+              223.251643 85.797573 158.695349 175.561993 113.292276c33.497928-16.942881
+              86.034469-34.256198 136.52849-21.454638 99.112322 25.12626 148.276045
+              89.668229 212.594933 148.231019 9.101285-10.726296
+              18.204617-21.455661 27.305903-32.180933 22.473851-27.89635
+              54.370305-54.323233 83.868129-75.091232 23.11444-16.275685
+              50.242288-30.966269 79.967286-39.983643C725.90323 90.863451 735.981772
+              88.912006 746.057245 86.961584z`}
+              fill='#d81e06'
+            />
           </symbol>
         </svg>
       </div>
