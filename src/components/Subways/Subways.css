@@ -1,6 +1,7 @@
 .size {
   width: 9448px;
   height:  6719px;
+  /*width: 100%;*/
 }
 
 .canvas {
@@ -9,7 +10,7 @@
 }
 
 .img-layer {
-  opacity: .2;
+  opacity: 0;
   composes: size;
 }
 
@@ -18,16 +19,40 @@
   position: absolute;
   top: 0;
   left: 0;
+
+  :global(#tiananmen) {
+    opacity: 1;
+  }
+
+  :global(#authors text) {
+    font-size: 64px;
+    fill: #333;
+  }
+}
+
+.line {
+  fill: none;
+  opacity: 1;
+}
+
+.station {
+  opacity: 1;
 }
 
 .station--circle {
-  /*fill: red;*/
-  fill: none;
+  opacity: 1;
+  fill: rgb(255, 255, 255);
   stroke: black;
   stroke-width: 4px;
+}
+
+.active--circle {
+  fill: yellow;
   opacity: .7;
 }
 
 .station--text {
-  font-size: 24px;
+}
+
+.exchange-station {
 }

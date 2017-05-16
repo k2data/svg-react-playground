@@ -76,6 +76,7 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "MIT",
   "dependencies": {
+    "animejs": "^2.0.2",
     "antd": "^2.8.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
@@ -90,7 +91,9 @@
     "css-loader": "^0.26.2",
     "cssnano": "^3.10.0",
     "d3": "^4.8.0",
+    "d3-ease": "^1.0.3",
     "d3-selection": "^1.0.6",
+    "d3-transition": "^1.1.0",
     "debug": "^2.6.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
