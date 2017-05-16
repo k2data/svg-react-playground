@@ -380,8 +380,6 @@ export class Subways extends Component {
         <svg className={styles['svg-layer']}
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
-          width='6719'
-          height='9448'
           viewBox='0 0 9448 6719'
           ref='svg'
         >
