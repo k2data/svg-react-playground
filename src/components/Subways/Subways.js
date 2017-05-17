@@ -73,10 +73,13 @@ export class Subways extends Component {
       offset.x = document.body.clientWidth / 2
       offset.y = document.body.clientHeight / 2
     }
-    window.scrollTo(centerOfChina.x - offset.x || 0,
-      centerOfChina.y - offset.y || 0)
-    this.draw()
-    this.animate()
+    window.scrollTo(centerOfChina.x / 4 - offset.x || 0,
+      centerOfChina.y / 4 - offset.y || 0)
+
+    setTimeout(() => {
+      this.draw()
+      this.animate()
+    }, 200)
     // this.showActivePoint()
   }
 
@@ -99,6 +102,8 @@ export class Subways extends Component {
     const stations = svg.selectAll(`.${styles['station']}`)
 
     // Init:
+    tiananmen
+      .attr('transform', this.scaleTranslate(4))
     stations
       .style('opacity', 0)
     lines.each(function () {
@@ -107,13 +112,12 @@ export class Subways extends Component {
       line.style('stroke-dasharray', length)
       line.style('stroke-dashoffset', length)
     })
-    tiananmen
-      .attr('transform', this.scaleTranslate(4))
 
     // Begin animate
     const transOfTiananmen = d3.transition()
+      .delay(200)
       .duration(1000)
-      .ease(d3.easeLinear)
+      .ease(d3.easeBackOut)
     tiananmen
       .transition(transOfTiananmen)
       .attrTween('transform', () => {
@@ -125,7 +129,7 @@ export class Subways extends Component {
       })
 
     const transOfLines = d3.transition()
-      .delay(1000)
+      .delay(1200)
       .duration(1600)
       .ease(d3.easeLinear)
     lines
@@ -141,8 +145,8 @@ export class Subways extends Component {
     stations
       .each(function () {
         const transOfStation = d3.transition()
-          .delay(2600 + Math.random() * 1000)
-          .duration(601)
+          .delay(2800 + Math.random() * 1000)
+          .duration(600)
           .ease(d3.easePoly)
         const station = d3.select(this)
         station

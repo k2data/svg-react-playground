@@ -1,6 +1,6 @@
 .size {
-  width: 9448px;
-  height:  6719px;
+  width: calc(9448px / 4);
+  height:  calc(6719px / 4);
   /*width: 100%;*/
 }
 
