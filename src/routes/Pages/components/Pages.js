@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import type { Location } from 'react-router'
 import Empty404 from 'components/Empty404'
 import Subways from 'components/Subways'
+import Gearing from 'components/Gearing'
 
 type Props = {
   location: Location
@@ -21,6 +22,8 @@ export class Pages extends Component {
     switch (name) {
       case 'Subways':
         return Subways
+      case 'Gearing':
+        return Gearing
       default:
         return Empty404
     }
