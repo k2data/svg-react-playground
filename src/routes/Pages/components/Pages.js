@@ -1,13 +1,13 @@
 // @flow
 import React, { Component } from 'react'
-import type { Location } from 'react-router'
+import type { Match } from 'react-router'
 import Empty404 from 'components/Empty404'
 import Subways from 'components/Subways'
 import Gearing from 'components/Gearing'
 import Alphabet from 'components/Alphabet'
 
 type Props = {
-  location: Location
+  match: Match
 }
 
 export class Pages extends Component {
@@ -15,17 +15,16 @@ export class Pages extends Component {
   getComponent: () => string
 
   getComponent (): string {
-    const { search } = this.props.location
-    const name = search
-      ? (new URLSearchParams(search.slice(1))).get('comp')
-      : 'Empty404'
+    console.log(this.props)
+    const { params: { comp } } = this.props.match
+    const name = comp || 'Empty404'
 
     switch (name) {
-      case 'Subways':
+      case 'subways':
         return Subways
-      case 'Gearing':
+      case 'gearing':
         return Gearing
-      case 'Alphabet':
+      case 'alphabet':
         return Alphabet
       default:
         return Empty404
