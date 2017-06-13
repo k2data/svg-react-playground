@@ -1,0 +1,30 @@
+.panel {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+
+  form {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+  }
+
+  path {
+    fill-rule: evenodd;
+    stroke: #333;
+    stroke-width: 2px;
+  }
+}
+
+.sun path {
+  fill: #504d4a;
+}
+
+.planet path {
+  fill: #504d4a;
+}
+
+.annulus path {
+  fill: #c6dbef;
+}
