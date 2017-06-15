@@ -1,90 +1,92 @@
 import React from 'react'
-import iiBD from './assets/iiBD.png'
+import iibd from './assets/iiBD.png'
 import styles from './IIBD.css'
 
 class IIBD extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.canvas = {}
+    this.image = {}
+    this.particles = []
+  }
   componentDidMount () {
-    let image = {}
-    let particles = []
-    const canvas = this.refs.iibd
-    const ctx = canvas.getContext('2d')
-    let img = new Image()
-    img.src = iiBD
-    img.crossOrigin = ''
+    const canvas = this.canvas
+    const image = this.image
+    const _this = this
 
-    img.onload = function () {
-      image.obj = img
-      image.w = img.width
-      image.h = img.height
-      image.x = 0
-      image.y = 0
-      ctx.drawImage(img, 0, 0)
-      image.imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-      console.log(image.imageData)
-      console.log(image)
+    canvas.obj = this.refs.iibd
 
-      calculate()
+    if (canvas.obj.getContext) {
+      canvas.ctx = canvas.obj.getContext('2d')
 
-      draw()
-    }
+      canvas.w = canvas.obj.width = document.body.clientWidth
+      canvas.h = canvas.obj.height = document.body.clientHeight
 
-    function calculate () {
-      var cols = 100
-      var rows = 120
-      var sWidth = parseInt(image.w / cols)
-      var sHeight = parseInt(image.h / rows)
+      let img = new Image()
+      img.src = iibd
+      img.crossOrigin = ''
+      img.onload = function () {
+        image.obj = img
+        image.w = img.width
+        image.h = img.height
+        image.x = parseInt(canvas.w / 2 - image.w / 2)
+        image.y = 200
+        console.log(image.w, image.h)
 
-      var pos = 0
-      var data = image.imageData.data
-      for (var i = 0; i < cols; i++) {
-        for (var j = 0; j < rows; j++) {
-          pos = (j * sHeight * image.w + i * sWidth) * 4
-          // console.log(pos)
-          if (data[pos] > 30) {
-            var particle = {
-              x: image.x + i * sWidth,
-              y: image.y + j * sHeight
-            }
-            // if (data[pos + 1] < 175 && data[pos + 2] < 10) {
-            //   // particle.fillStyle = rgba()
-            // } else if (data[pos + 1] < 75 && data[pos + 1] > 50) {
-            //   particle.fillStyle = '#ff4085'
-            // } else if (data[pos + 1] < 220 && data[pos + 1] > 190) {
-            //   particle.fillStyle = '#00cfff'
-            // } else if (data[pos + 1] < 195 && data[pos + 1] > 175) {
-            //   particle.fillStyle = '#9abc1c'
-            // }
-            var r = data[pos]
-            var g = data[pos + 1]
-            var b = data[pos + 2]
-            var a = data[pos + 3] / 255
-            particle.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
-          // console.log(`rgba(${r}, ${g}, ${b}, ${a})`)
-            particles.push(particle)
-          }
-        }
-      }
-    }
+        canvas.ctx.drawImage(image.obj, image.x, image.y, image.w, image.h)
+        image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h)
 
-    function draw () {
-      ctx.clearRect(0, 200, canvas.width, canvas.height)
-
-      var len = particles.length
-      var currParticle = null
-
-      for (var i = 0; i < len; i++) {
-        currParticle = particles[i]
-
-        ctx.fillStyle = currParticle.fillStyle
-        ctx.fillRect(currParticle.x, currParticle.y + 200, 1, 1)
+        _this.calculate()
+        _this.draw()
       }
     }
   }
+
+  calculate () {
+    const image = this.image
+    const cols = 200
+    const rows = 100
+    const sWidth = parseInt(image.w / cols)
+    const sHeight = parseInt(image.h / rows)
+    let pos = 0
+    var { data } = image.imageData
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        pos = (j * sHeight * image.w + i * sWidth) * 4
+        let particle = {
+          x: image.x + i * sWidth + (Math.random() - 0.5) * 20,
+          y: image.y + j * sHeight + (Math.random() - 0.5) * 20
+        }
+        if (data[pos] < 200) {
+          const r = data[pos]
+          const g = data[pos + 1]
+          const b = data[pos + 2]
+          // const a = data[pos + 3] / 255
+          const a = data[pos + 3] / 255  // more light
+          particle.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
+        }
+        this.particles.push(particle)
+      }
+    }
+  }
+
+  draw () {
+    const canvas = this.canvas
+    canvas.ctx.clearRect(0, 0, canvas.w, canvas.h)
+    const len = this.particles.length
+    let currParticle
+    for (var i = 0; i < len; i++) {
+      currParticle = this.particles[i]
+      canvas.ctx.fillStyle = currParticle.fillStyle
+      canvas.ctx.fillRect(currParticle.x, currParticle.y, 2, 1)
+    }
+  }
+
   render () {
     return (
-      <div>
-        <canvas ref='iibd' width='600' height='400' />
-        <div className={styles['test']} />
+      <div className={styles['wrap']}>
+        <canvas ref='iibd' />
       </div>
     )
   }
