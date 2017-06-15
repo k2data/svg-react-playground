@@ -31,8 +31,8 @@ export default () => (
     width='128' height='128'
     viewBox='0 0 128 128'
     xmlns='http://www.w3.org/2000/svg'
-    stroke='black'
-    fill='none'
+    stroke='skyblue'
+    fill='skyblue'
     ref={(svg) => {
       svg.querySelector('path').setAttribute('d', k(128))
     }}
