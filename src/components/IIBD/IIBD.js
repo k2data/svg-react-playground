@@ -9,6 +9,8 @@ class IIBD extends React.Component {
     this.canvas = {}
     this.image = {}
     this.particles = []
+
+    this.draw = this.draw.bind(this)
   }
   componentDidMount () {
     const canvas = this.canvas
@@ -38,7 +40,7 @@ class IIBD extends React.Component {
         image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h)
 
         _this.calculate()
-        _this.draw()
+        requestAnimationFrame(_this.draw)
       }
     }
   }
@@ -51,6 +53,7 @@ class IIBD extends React.Component {
     const sHeight = parseInt(image.h / rows)
     let pos = 0
     var { data } = image.imageData
+    const time = new Date().getTime()
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
         pos = (j * sHeight * image.w + i * sWidth) * 4
@@ -66,6 +69,15 @@ class IIBD extends React.Component {
           const a = data[pos + 3] / 255  // more light
           particle.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
         }
+        if (i % 3 === 0 && j % 5 === 3) {
+          particle.flotage = true
+          particle.startX = particle.x
+          particle.startY = particle.y
+          particle.startTime = time + parseInt(Math.random() * 20 * 1000)
+          particle.killTime = time + parseInt(Math.random() * 35 * 1000)
+          particle.speedX = (Math.random() - 0.5) * 2
+          particle.speedY = (Math.random() - 0.5) * 0.9
+        }
         this.particles.push(particle)
       }
     }
@@ -76,11 +88,23 @@ class IIBD extends React.Component {
     canvas.ctx.clearRect(0, 0, canvas.w, canvas.h)
     const len = this.particles.length
     let currParticle
+    const time = new Date().getTime()
     for (var i = 0; i < len; i++) {
       currParticle = this.particles[i]
+      if (currParticle.flotage && currParticle.startTime < time) {
+        currParticle.x += currParticle.speedX
+        currParticle.y += currParticle.speedY
+      }
+      if (currParticle.killTime < time) {
+        currParticle.x = currParticle.startX
+        currParticle.y = currParticle.startY
+        currParticle.startTime = time + parseInt(Math.random() * 20 * 1000)
+        currParticle.killTime = time + parseInt(Math.random() * 35 * 1000)
+      }
       canvas.ctx.fillStyle = currParticle.fillStyle
-      canvas.ctx.fillRect(currParticle.x, currParticle.y, 2, 1)
+      canvas.ctx.fillRect(currParticle.x, currParticle.y, 2, 2)
     }
+    requestAnimationFrame(this.draw)
   }
 
   render () {
