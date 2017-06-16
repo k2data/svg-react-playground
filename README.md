@@ -11,3 +11,4 @@ $ yarn start      # Compile and launch (same as `npm start`)
 - [ ] wheels
 - [ ] ray wheel
 - [ ] Alphabet: ~~A~~ B C D E F G H I J ~~K~~ ~~L~~ M N O P **Q** R S T U V W X Y Z
+- [ ] iiBD: ~~float~~ firework

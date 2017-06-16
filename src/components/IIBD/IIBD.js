@@ -27,7 +27,7 @@ class IIBD extends React.Component {
 
       let img = new Image()
       img.src = iibd
-      img.crossOrigin = ''
+      // img.crossOrigin = ''
       img.onload = function () {
         image.obj = img
         image.w = img.width
@@ -40,6 +40,7 @@ class IIBD extends React.Component {
         image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h)
 
         _this.calculate()
+        // canvas.ctx.scale(0.3, 0.3)
         requestAnimationFrame(_this.draw)
       }
     }
