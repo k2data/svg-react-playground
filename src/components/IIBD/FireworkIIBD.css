@@ -1,0 +1,3 @@
+.firework-iibd {
+  composes: static-iibd from './StaticIIBD.css'
+}
