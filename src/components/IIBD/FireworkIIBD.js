@@ -1,6 +1,8 @@
 import React from 'react'
 import iibd from './assets/iiBD.png'
 import styles from './FireworkIIBD.css'
+import { Button } from 'antd'
+import * as Easings from './utils'
 
 class FireworkIIBD extends React.Component {
   constructor (props) {
@@ -11,8 +13,13 @@ class FireworkIIBD extends React.Component {
     this.particles = []
     this.requestID = 0
 
+    this.state = {
+      type: 'easeOutElastic'
+    }
+
     this.draw = this.draw.bind(this)
     this.go = this.go.bind(this)
+    this.linear = this.linear.bind(this)
   }
   componentDidMount () {
     const canvas = this.canvas
@@ -36,7 +43,6 @@ class FireworkIIBD extends React.Component {
         image.h = img.height
         image.x = parseInt(canvas.w / 2 - image.w / 2)
         image.y = 200
-        console.log(image.w, image.h)
 
         canvas.ctx.drawImage(image.obj, image.x, image.y, image.w, image.h)
         image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h)
@@ -51,38 +57,6 @@ class FireworkIIBD extends React.Component {
   componentWillUnmount () {
     cancelAnimationFrame(this.requestID)
     console.log('cancel animation frame')
-  }
-
-  linear (t, b, c, d) {
-    return c * t / d + b
-  }
-
-  easeInOutQuad (e, a, g, f) {
-    e /= f / 2
-    if (e < 1) {
-      return g / 2 * e * e + a
-    }
-    e--
-    return -g / 2 * (e * (e - 2) - 1) + a
-  }
-
-  easeOutElastic (g, e, k, j, f, i) {
-    if (g == 0) {
-      return e
-    }
-    if ((g /= j) == 1) {
-      return e + k
-    }
-    if (!i) {
-      i = j * 0.3
-    }
-    if (!f || f < Math.abs(k)) {
-      f = k
-      var h = i / 4
-    } else {
-      var h = i / (2 * Math.PI) * Math.asin(k / f)
-    }
-    return (f * Math.pow(2, -10 * g) * Math.sin((g * j - h) * (2 * Math.PI) / i) + k + e)
   }
 
   calculate () {
@@ -105,7 +79,7 @@ class FireworkIIBD extends React.Component {
           delay: j / 20,
           currTime: 0,
           count: 0,
-          duration: parseInt(1000 / 16.66) + 1,
+          duration: parseInt(2000 / 16.66) + 1,
           interval: parseInt(Math.random() * 10 * 0.5)
         }
         if (data[pos] < 200) {
@@ -156,8 +130,8 @@ class FireworkIIBD extends React.Component {
         } else {
           if (currTime < duration + currDelay) {
             if (currTime >= currDelay) {
-              curX = this.easeOutElastic(currTime - currDelay, currParticle.x0, currParticle.x - currParticle.x0, duration)
-              curY = this.easeOutElastic(currTime - currDelay, currParticle.y0, currParticle.y - currParticle.y0, duration)
+              curX = Easings[this.state.type](currTime - currDelay, currParticle.x0, currParticle.x - currParticle.x0, duration)
+              curY = Easings[this.state.type](currTime - currDelay, currParticle.y0, currParticle.y - currParticle.y0, duration)
               // console.log(curY)
               canvas.ctx.fillRect(curX, curY, 2, 2)
             }
@@ -171,10 +145,35 @@ class FireworkIIBD extends React.Component {
     this.requestID = requestAnimationFrame(this.go)
   }
 
+  linear () {
+    console.log(this.image)
+    cancelAnimationFrame(this.requestID)
+    console.log(this.canvas.w)
+    this.canvas.ctx.clearRect(0, 0, this.canvas.w, this.canvas.h)
+    this.setState({ type: 'linear' })
+    this.calculate()
+    requestAnimationFrame(this.go)
+  }
+
   render () {
     return (
       <div className={styles['firework-iibd']}>
         <canvas ref='iibd' />
+        <aside>
+          <Button ghost type='primary' icon='reload' />
+          <Button ghost type='primary' onClick={this.linear}>
+            linear
+          </Button>
+          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeInOutQuad' }) }}>
+            easeInOutQuad
+          </Button>
+          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeOutElastic' }) }}>
+            easeOutElastic
+          </Button>
+          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeOutBack' }) }}>
+            easeOutBack
+          </Button>
+        </aside>
       </div>
     )
   }
