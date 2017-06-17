@@ -3,7 +3,7 @@ import styles from './IIBD.css'
 import StaticIIBD from './StaticIIBD'
 import FloatIIBD from './FloatIIBD'
 import FireworkIIBD from './FireworkIIBD'
-
+import 'antd/lib/button/style/css'
 import { Button } from 'antd'
 
 const stage = [StaticIIBD, FloatIIBD, FireworkIIBD]

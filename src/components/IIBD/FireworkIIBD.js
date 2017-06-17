@@ -1,5 +1,6 @@
 import React from 'react'
 import iibd from './assets/iiBD.png'
+import k2data from './assets/k2data.png'
 import styles from './FireworkIIBD.css'
 import { Button } from 'antd'
 import * as Easings from './utils'
@@ -14,12 +15,14 @@ class FireworkIIBD extends React.Component {
     this.requestID = 0
 
     this.state = {
-      type: 'easeOutElastic'
+      type: 'linear',
+      complete: false
     }
 
     this.draw = this.draw.bind(this)
     this.go = this.go.bind(this)
-    this.linear = this.linear.bind(this)
+    this.reload = this.reload.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
   componentDidMount () {
     const canvas = this.canvas
@@ -35,8 +38,8 @@ class FireworkIIBD extends React.Component {
       canvas.h = canvas.obj.height = document.body.clientHeight
 
       let img = new Image()
-      img.src = iibd
-      // img.crossOrigin = ''
+      img.src = k2data
+      img.crossOrigin = 'anonymous'
       img.onload = function () {
         image.obj = img
         image.w = img.width
@@ -51,6 +54,13 @@ class FireworkIIBD extends React.Component {
         // canvas.ctx.scale(0.3, 0.3)
         requestAnimationFrame(_this.go)
       }
+    }
+  }
+
+  componentDidUpdate () {
+    if (!this.state.complete) {
+      this.calculate()
+      requestAnimationFrame(this.go)
     }
   }
 
@@ -74,12 +84,12 @@ class FireworkIIBD extends React.Component {
         let particle = {
           x0: this.canvas.w / 2,  // start position
           y0: this.canvas.h - 200,
-          x: image.x + i * sWidth + (Math.random() - 0.5) * 20,
-          y: image.y + j * sHeight + (Math.random() - 0.5) * 20,
-          delay: j / 20,
+          x: image.x + i * sWidth + (Math.random() - 0.5) * 10,
+          y: image.y + j * sHeight + (Math.random() - 0.5) * 10,
+          delay: j * 3,
           currTime: 0,
           count: 0,
-          duration: parseInt(2000 / 16.66) + 1,
+          duration: parseInt(1000 / 16.66),
           interval: parseInt(Math.random() * 10 * 0.5)
         }
         if (data[pos] < 200) {
@@ -107,6 +117,7 @@ class FireworkIIBD extends React.Component {
   }
 
   go () {
+    // this.setState({ complete: false })
     const canvas = this.canvas
     canvas.ctx.clearRect(0, 0, canvas.w, canvas.h)
     const len = this.particles.length
@@ -126,6 +137,7 @@ class FireworkIIBD extends React.Component {
         if (this.particles[len - 1].duration + this.particles[len - 1].interval < this.particles[len - 1].currTime / 2) {
           cancelAnimationFrame(this.requestID)
           this.draw()
+          this.setState({ complete: true })
           return
         } else {
           if (currTime < duration + currDelay) {
@@ -145,32 +157,41 @@ class FireworkIIBD extends React.Component {
     this.requestID = requestAnimationFrame(this.go)
   }
 
-  linear () {
-    console.log(this.image)
-    cancelAnimationFrame(this.requestID)
-    console.log(this.canvas.w)
-    this.canvas.ctx.clearRect(0, 0, this.canvas.w, this.canvas.h)
-    this.setState({ type: 'linear' })
-    this.calculate()
-    requestAnimationFrame(this.go)
+  reload () {
+    this.particles = []
+    this.setState({ complete: false })
+  }
+
+  onClick (e) {
+    let type
+    if (e.target.nodeName === 'SPAN') {
+      type = e.target.innerHTML
+    } else if (e.target.nodeName === 'BUTTON') {
+      type = e.target.firstChild.innerHTML
+    }
+    this.particles = []
+    this.setState({ type, complete: false })
   }
 
   render () {
+    const display = this.state.complete ? 'none' : 'block'
+    const opacity = this.state.complete ? '1' : '0.4'
     return (
       <div className={styles['firework-iibd']}>
         <canvas ref='iibd' />
-        <aside>
-          <Button ghost type='primary' icon='reload' />
-          <Button ghost type='primary' onClick={this.linear}>
+        <aside style={{ opacity }}>
+          <div className={styles['modal']} style={{ display }} />
+          <Button ghost type='primary' icon='reload' onClick={this.reload} />
+          <Button ghost type={this.state.type === 'linear' ? '' : 'primary'} onClick={this.onClick}>
             linear
           </Button>
-          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeInOutQuad' }) }}>
+          <Button ghost type={this.state.type === 'easeInOutQuad' ? '' : 'primary'} onClick={this.onClick}>
             easeInOutQuad
           </Button>
-          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeOutElastic' }) }}>
+          <Button ghost type={this.state.type === 'easeOutElastic' ? '' : 'primary'} onClick={this.onClick}>
             easeOutElastic
           </Button>
-          <Button ghost type='primary' onClick={() => { this.setState({ type: 'easeOutBack' }) }}>
+          <Button ghost type={this.state.type === 'easeOutBack' ? '' : 'primary'} onClick={this.onClick}>
             easeOutBack
           </Button>
         </aside>
