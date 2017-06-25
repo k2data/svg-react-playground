@@ -4,6 +4,7 @@ import Home from './Home'
 import Counter from './Counter'
 import Wheels from './Wheels'
 import Pages from './Pages'
+import SVGLine from './SVGLine'
 
 // Force import during development to enable Hot-Module Replacement
 // not need ?
@@ -17,5 +18,6 @@ export default {
   home: Home,
   counter: Counter(),
   wheels: Wheels(),
-  pages: Pages()
+  pages: Pages(),
+  svgLine: SVGLine()
 }
