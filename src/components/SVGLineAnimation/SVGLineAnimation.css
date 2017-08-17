@@ -1,0 +1,116 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+}
+
+.use-text:nth-child(1) {
+  stroke: #582867;
+  animation: line1 8s infinite ease-in-out forwards;
+}
+
+.use-text:nth-child(2) {
+  stroke: #D61C59;
+  animation: line2 8s infinite ease-in-out forwards;
+}
+
+.use-text:nth-child(3) {
+  stroke: #E7D84B;
+  animation: line3 8s infinite ease-in-out forwards;
+}
+.use-text:nth-child(4) {
+  stroke: #EFEAC5;
+  animation: line4 8s infinite ease-in-out forwards;
+}
+.use-text:nth-child(5) {
+  stroke: #1B8798;
+  animation: line5 8s infinite ease-in-out forwards;
+}
+
+@keyframes line1 {
+  50% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 7%;
+  }
+
+  70% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 7%;
+  }
+}
+
+@keyframes line2 {
+  50% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 14%;
+  }
+
+  70% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 14%;
+  }
+}
+
+@keyframes line3 {
+  50% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 21%;
+  }
+
+  70% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 21%;
+  }
+}
+
+@keyframes line4 {
+  50% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 28%;
+  }
+
+  70% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 28%;
+  }
+}
+
+@keyframes line5 {
+  50% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 35%;
+  }
+
+  70% {
+    stroke-dasharray: 7% 28%;
+    stroke-dashoffset: 35%;
+  }
+}
+.use-text {
+  fill: none;
+  stroke: #fff;
+  stroke-dashoffset: 35%;
+  stroke-dasharray: 0 87.5%;
+  stroke-width: 2px;
+}
+.text {
+  font-size: 200px;
+  font-weight: 700;
+}
+.main {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.demo {
+  display: block;
+  width: 100%;
+  height: 400px;
+}

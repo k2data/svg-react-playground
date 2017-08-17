@@ -17,6 +17,7 @@ export const CoreLayout = () => (
         <Route path='/pages/:comp' component={routes.pages} exact />
         <Route path='/wheels' component={routes.wheels} />
         <Route path='/counter' component={routes.counter} exact />
+        <Route path='/svg-line' component={routes.svgLine} exact />
       </Switch>
     </div>
   </div>
