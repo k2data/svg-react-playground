@@ -1,6 +1,6 @@
 import React from 'react'
 import iibd from './assets/iiBD.png'
-import k2data from './assets/k2data.png'
+import k2data from './assets/iibd_k2data.png'
 import styles from './FireworkIIBD.css'
 import { Button } from 'antd'
 import * as Easings from './utils'
@@ -45,7 +45,7 @@ class FireworkIIBD extends React.Component {
         image.w = img.width
         image.h = img.height
         image.x = parseInt(canvas.w / 2 - image.w / 2)
-        image.y = 200
+        image.y = 100
 
         canvas.ctx.drawImage(image.obj, image.x, image.y, image.w, image.h)
         image.imageData = canvas.ctx.getImageData(image.x, image.y, image.w, image.h)

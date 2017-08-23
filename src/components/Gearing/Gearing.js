@@ -5,14 +5,15 @@ import styles from './Gearing.css'
 
 export class Gearing extends Component {
   componentDidMount () {
-    const width = 960
-    const height = 500
+    const width = document.body.clientWidth || 1400
+    const height = document.body.clientHeight || 700
     const radius = 6
+    const scale = width > 1400 ? 1 : width / 1400
     // const x = Math.sin(2 * Math.PI / 3)
     // const y = Math.cos(2 * Math.PI / 3)
 
     let offset = 0
-    let speed = 4
+    let speed = 2
     const start = Date.now()
 
     const svg = d3.select(this.refs.panel)
@@ -20,7 +21,7 @@ export class Gearing extends Component {
         .attr('width', width)
         .attr('height', height)
       .append('g')
-        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(.55)')
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scale + ')')
       .append('g')
 
     const frame = svg.append('g')
@@ -42,12 +43,23 @@ export class Gearing extends Component {
 
     gs.append('path')
       .attr('d', gear)
+      .attr('class', styles['gearing'])
+
+    gs.append('path')
+      .attr('class', styles['logo'])
+      .attr('d', (d) => d.logo && d.logo.d)
+      .attr('transform', (d) => d.logo ? d.logo.transform : '')
+      .attr('stroke-width', (d) => d.logo && d.logo.stroke)
+
     gs.append('text')
       .attr('x', 0)
       .attr('y', 0)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', (d) => d.teeth * 3 / 2)
-      .attr('dy', (d) => d.teeth * 3 / 2 / 2 - 4)
+      .attr('text-anchor', (d) => d.dx ? 'inherit' : 'middle')
+      // .attr('font-size', (d) => d.teeth * 3 / 2)
+      // .attr('dy', (d) => d.teeth * 3 / 2 / 2 - 4)
+      .attr('font-size', (d) => d.size)
+      .attr('dy', (d) => d.dy)
+      .attr('dx', (d) => d.dx ? d.dx : 0)
       .text((d) => d.name)
 
     d3.selectAll('input[name=reference]')
@@ -80,9 +92,9 @@ export class Gearing extends Component {
         } else if (r2 === radius * 15) {
           r3 = r2 * 2 / 3
         } else if (r2 === radius * 13 || r2 === radius * 12 || r2 === radius * 11) {
-          r3 = r2 * 3 / 5
+          r3 = r2 * 0.64
         } else {
-          r3 = 20
+          r3 = 30
         }
       }
       const da = Math.PI / n
@@ -103,12 +115,20 @@ export class Gearing extends Component {
       return path.join('')
     }
 
-    d3.timer(function () {
-      const angle = (Date.now() - start) * speed
-      const transform = function (d) { return 'rotate(' + angle / d.radius + ')' }
-      frame.selectAll('path').attr('transform', transform)
-      frame.attr('transform', transform) // frame of reference
-    })
+    setTimeout(function () {
+      d3.selectAll('path')
+        .attr('style', 'stroke-dashoffset:0;')
+      d3.selectAll(`.${styles['logo']}`)
+        .attr('style', 'fill:#504d4a;')
+      d3.selectAll('text')
+        .attr('style', 'stroke-dashoffset:0;stroke:#333;stroke-width:1')
+      d3.timer(function () {
+        const angle = (Date.now() - start) * speed
+        const transform = function (d) { return 'rotate(' + angle / d.radius + ')' }
+        frame.selectAll(`.${styles['gearing']}`).attr('transform', transform)
+        frame.attr('transform', transform) // frame of reference
+      })
+    }, 3200)
   }
   render () {
     return (
