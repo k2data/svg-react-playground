@@ -1,6 +1,6 @@
 import React from 'react'
 import iibd from './assets/iiBD.png'
-import k2data from './assets/iibd_k2data.png'
+import k2data from './assets/k2data_logo.png'
 import styles from './FireworkIIBD.css'
 import { Button } from 'antd'
 import * as Easings from './utils'
