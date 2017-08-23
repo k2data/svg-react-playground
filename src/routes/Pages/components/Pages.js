@@ -5,6 +5,8 @@ import Empty404 from 'components/Empty404'
 import Subways from 'components/Subways'
 import Gearing from 'components/Gearing'
 import Alphabet from 'components/Alphabet'
+import IIBD from 'components/IIBD'
+import Zdx from 'components/SVGLineAnimation'
 
 type Props = {
   match: Match
@@ -26,6 +28,10 @@ export class Pages extends Component {
         return Gearing
       case 'alphabet':
         return Alphabet
+      case 'iibd':
+        return IIBD
+      case 'zdx':
+        return Zdx
       default:
         return Empty404
     }
