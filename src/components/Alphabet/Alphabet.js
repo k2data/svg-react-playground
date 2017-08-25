@@ -1,5 +1,6 @@
 import React from 'react'
 import A from './A'
+import B from './B'
 import L from './L'
 import K from './K'
 import T from './T'
@@ -8,6 +9,7 @@ import Y from './Y'
 export default () => (
   <div>
     <A />
+    <B />
     <L />
     <K />
     <T />
