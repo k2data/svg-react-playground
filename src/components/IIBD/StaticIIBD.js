@@ -1,5 +1,5 @@
 import React from 'react'
-import iibd from './assets/iiBD.png'
+import iibd from './assets/iibd_k2data.png'
 import styles from './StaticIIBD.css'
 
 class StaticIIBD extends React.Component {
@@ -57,8 +57,8 @@ class StaticIIBD extends React.Component {
       for (let j = 0; j < rows; j++) {
         pos = (j * sHeight * image.w + i * sWidth) * 4
         let particle = {
-          x: image.x + i * sWidth + (Math.random() - 0.5) * 20,
-          y: image.y + j * sHeight + (Math.random() - 0.5) * 20
+          x: image.x + i * sWidth + (Math.random() - 0.3) * 10,
+          y: image.y + j * sHeight + (Math.random() - 0.3) * 10
         }
         if (data[pos] < 200) {
           const r = data[pos]

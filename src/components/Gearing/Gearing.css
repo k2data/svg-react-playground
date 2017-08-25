@@ -11,20 +11,47 @@
   }
 
   path {
+    fill: none;
     fill-rule: evenodd;
     stroke: #333;
-    stroke-width: 2px;
+    stroke-dashoffset:1500;
+    stroke-dasharray: 1500;
+    animation: run 4s ease-in-out;
+  }
+
+  .gearing {
+    stroke-width: 3px;
+  }
+
+  .logo {
+    stroke:#504d4a;
+  }
+
+  text {
+    stroke: #333;
+    fill: none;
+    stroke-width: 1px;
+    stroke-dashoffset:1500;
+    stroke-dasharray: 1500;
+    animation: run 4s ease-in-out;
   }
 }
 
 .sun path {
-  fill: #504d4a;
+  /*fill: #504d4a;*/
 }
 
 .planet path {
-  fill: #504d4a;
+  fill: none;
+  stroke: #504d4a;
 }
 
 .annulus path {
-  fill: #c6dbef;
+  /*fill: #c6dbef;*/
+}
+
+@keyframes run {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

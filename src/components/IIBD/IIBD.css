@@ -16,4 +16,9 @@
       margin-right: 20px;
     }
   }
+
+  :global .ant-btn {
+    border-color: #87ceeb;
+    color: #87ceeb;
+  }
 }
