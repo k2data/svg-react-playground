@@ -57,10 +57,10 @@ class Empty404 extends React.Component {
         if (d.flag) {
           return (
             `rotateY(${30 + (Math.random() - 0.5) * 15}deg)
-            translate3d(${100 + (Math.random() * 20)}px,
+            translate3d(${100 + (Math.random() * 10)}px,
             ${(Math.random() * 10)}px,
             ${300 + (Math.random() * 20)}px)
-            scale(${1 + Math.round(Math.random() * 0.6)})`
+            scale(${1.1 + Math.round(Math.random() * 0.4)})`
           )
         } else {
           return (

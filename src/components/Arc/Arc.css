@@ -1,0 +1,34 @@
+.arc {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #222;
+}
+
+.arc-box {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  margin: 20px;
+  box-shadow: -4px -4px 20px #eee;
+  text-align: center;
+}
+
+.tracks {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.bodies path {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.bodies .text-path {
+  stroke: none;
+}
+
+.bodies text {
+  fill: #000;
+  font: 500 12px "Helvetica Neue";
+}

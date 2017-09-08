@@ -6,6 +6,7 @@ import Subways from 'components/Subways'
 import Gearing from 'components/Gearing'
 import Alphabet from 'components/Alphabet'
 import IIBD from 'components/IIBD'
+import Arc from 'components/Arc'
 import Zdx from 'components/SVGLineAnimation'
 
 type Props = {
@@ -32,6 +33,8 @@ export class Pages extends Component {
         return IIBD
       case 'zdx':
         return Zdx
+      case 'arc':
+        return Arc
       default:
         return Empty404
     }
