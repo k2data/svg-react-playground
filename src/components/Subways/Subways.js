@@ -75,7 +75,6 @@ export class Subways extends Component {
     }
     window.scrollTo(centerOfChina.x / 4 - offset.x || 0,
       centerOfChina.y / 4 - offset.y || 0)
-    console.log(centerOfChina.x / 4 - offset.x || 0)
 
     setTimeout(() => {
       this.draw()
