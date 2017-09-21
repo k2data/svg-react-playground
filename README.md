@@ -22,12 +22,12 @@ $ yarn start      # Compile and launch (same as `npm start`)
 [![404page_not_found.gif](https://s20.postimg.org/5ccides2l/404page_not_found.gif)](https://postimg.org/image/61vaprsm1/)
 
 ### 5. ColorClock
-[![color_clock.gif](https://s20.postimg.org/7w857ifml/color_clock.gif)](https://postimg.org/image/yhao32hzt/)
+![color_clock.gif](./public/images/color_clock-min.gif)
 
 learn from [Mike Bostock](https://bl.ocks.org/mbostock/b89c89ec6b58435956a1)
 
 ### 6. ColorClock2
-[![timer.gif](https://s20.postimg.org/42eoycyal/timer.gif)](https://postimg.org/image/illtzrrfd/)
+![timer.gif](./public/images/timer-min.gif)
 
 inspired by [Polar Clock III](https://bl.ocks.org/mbostock/c150b717e18d387e1b98)
 ## Todos
