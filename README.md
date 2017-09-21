@@ -10,13 +10,13 @@ $ yarn start      # Compile and launch (same as `npm start`)
 ## 预览
 
 ### 1. 北京地铁
-[![subways.gif](./public/images/subways-min.gif)
+![subways.gif](./public/images/subways-min.gif)
 
 ### 2. 昆仑logo墙
-[![gearing.gif](./public/images/gearing-min.gif)
+![gearing.gif](./public/images/gearing-min.gif)
 
 ### 3. k2data logo
-[![k2data.gif](./public/images/k2data-min.gif)
+![k2data.gif](./public/images/k2data-min.gif)
 
 ### 4. 404 page not found
 [![404page_not_found.gif](https://s20.postimg.org/5ccides2l/404page_not_found.gif)](https://postimg.org/image/61vaprsm1/)
