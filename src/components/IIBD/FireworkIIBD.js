@@ -1,5 +1,5 @@
 import React from 'react'
-import iibd from './assets/iiBD.png'
+// import iibd from './assets/iiBD.png'
 import k2data from './assets/k2data_logo.png'
 import styles from './FireworkIIBD.css'
 import { Button } from 'antd'
@@ -77,7 +77,6 @@ class FireworkIIBD extends React.Component {
     const sHeight = parseInt(image.h / rows)
     let pos = 0
     var { data } = image.imageData
-    const time = new Date().getTime()
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
         pos = (j * sHeight * image.w + i * sWidth) * 4
@@ -134,7 +133,8 @@ class FireworkIIBD extends React.Component {
         currTime = currParticle.currTime
         duration = currParticle.duration
         currDelay = currParticle.interval
-        if (this.particles[len - 1].duration + this.particles[len - 1].interval < this.particles[len - 1].currTime / 2) {
+        if (this.particles[len - 1].duration + this.particles[len - 1].interval <
+          this.particles[len - 1].currTime / 2) {
           cancelAnimationFrame(this.requestID)
           this.draw()
           this.setState({ complete: true })

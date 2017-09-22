@@ -1,0 +1,69 @@
+.arc {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #222;
+}
+
+.arc-box {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  margin: 20px;
+  box-shadow: -4px -4px 20px #eee;
+  text-align: center;
+}
+
+/* color clock */
+.tracks {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.bodies path {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.bodies .text-path {
+  stroke: none;
+}
+
+.bodies text {
+  fill: #000;
+  font: 500 12px "Helvetica Neue";
+}
+
+/* pie */
+.pie {
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.pie:hover {
+  cursor: pointer;
+}
+
+/* color clock 2 */
+.track {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.tick:not(.tick-active) circle {
+  fill: #222 !important;
+  stroke: none !important;
+}
+
+.tick:not(.tick-active) text {
+  fill: #000 !important;
+}
+
+.tick:not(.tick-active):first-of-type circle {
+  stroke: #000 !important;
+}
+
+.tick:not(.tick-active):first-of-type text {
+  font-weight: bold;
+}

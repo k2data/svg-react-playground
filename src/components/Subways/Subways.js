@@ -5,7 +5,7 @@ import * as d3 from 'd3'
 // import { select } from 'd3-selection'
 // import { transition } from 'd3-transition'
 // import * as eases from 'd3-ease'
-import { lines, exchangeStations } from './lines'
+import { lines, exchangeStations } from './k2Lines'
 
 // const d3 = Object.assign({}, require('d3-selection'), require('d3-transition'), require('d3-ease'))
 // const d3 = {
@@ -75,7 +75,6 @@ export class Subways extends Component {
     }
     window.scrollTo(centerOfChina.x / 4 - offset.x || 0,
       centerOfChina.y / 4 - offset.y || 0)
-    console.log(centerOfChina.x / 4 - offset.x || 0)
 
     setTimeout(() => {
       this.draw()
