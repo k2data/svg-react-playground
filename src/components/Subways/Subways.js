@@ -5,7 +5,7 @@ import * as d3 from 'd3'
 // import { select } from 'd3-selection'
 // import { transition } from 'd3-transition'
 // import * as eases from 'd3-ease'
-import { lines, exchangeStations } from './lines'
+import { lines, exchangeStations } from './k2Lines'
 
 // const d3 = Object.assign({}, require('d3-selection'), require('d3-transition'), require('d3-ease'))
 // const d3 = {
