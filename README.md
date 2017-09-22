@@ -12,13 +12,13 @@ $ yarn start      # Compile and launch (same as `npm start`)
 ### 1. 北京地铁
 ![subways.gif](./public/images/subways-min.gif)
 
-### 2. 昆仑logo墙
+### 2. 昆仑数据logo墙
 ![gearing.gif](./public/images/gearing-min.gif)
 
-### 3. k2data logo
+### 3. K2data Logo
 ![k2data.gif](./public/images/k2data-min.gif)
 
-### 4. 404 page not found
+### 4. 404 Page Not Found
 [![404page_not_found.gif](https://s20.postimg.org/5ccides2l/404page_not_found.gif)](https://postimg.org/image/61vaprsm1/)
 
 ### 5. ColorClock
